@@ -1,15 +1,45 @@
-<h1>Welcome to <%= @shop %>!</h1>
-<h2>Products</h2>
-  <ul>
-    <% @products.each do |product| %>
-          <%= link_to shop_product_path(product) do %>
-                  <%= cl_image_tag product.photo.key %>
-                    <h5><strong><%= product.name %></strong></h5>
+<div class="container">
+  <h1>Welcome to <%= @shop %>!</h1>
+  <h2>Products</h2>
+    <ul>
+      <% @products.each do |product| %>
+            <%= link_to shop_product_path(product) do %>
+                    <%
+=begin%>
+ <%= cl_image_tag product.photo.key %>
+<%
+=end%>
+                      <h5><strong><%= product.name %></strong></h5>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
 
-<% if policy(@shop).edit? %>
-  <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
-  <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
-<% end %>
+  <% if policy(@shop).edit? %>
+    <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+    <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
+  <% end %>
+
+<h2><%= pluralize @shop.reviews.size, "review" %></h2>
+
+<div>
+  <% if @shop.reviews.blank? %>
+    Be the first to leave a review for <%= @shop.name %>
+  <% else %>
+    <% @shop.reviews.each do |review| %>
+      <p><%= review.content %></p>
+    <% end %>
+  <% end %>
+</div>
+
+  <div data-controller="insert-in-list">
+    <div data-insert-in-list-target="items">
+      <!-- [...] -->
+    </div>
+    <%= simple_form_for([@shop, @review],
+      data: {insert_in_list_target: "form"}) do |f|
+    %>
+      <%= f.input :content %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

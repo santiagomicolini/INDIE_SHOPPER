@@ -8,27 +8,37 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
+    authorize @shop
   end
 
   def create
     @shop = Shop.new(shop_params)
     @shop.user = current_user
     @shop.save
+    authorize @shop
   end
 
   def show
+    authorize @shop
     @products = @shop.products
+    @review = Review.new
   end
 
   def edit
+    authorize @shop
   end
 
   def update
+    authorize @shop
     if @shop.update(shop_params)
       redirect_to shop_path(@shop)
     else
       render "edit", status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    authorize @shop
   end
 
   private
