@@ -6,6 +6,7 @@
 
   <div class="product">
     <h1><%= @product.name %></h1>
+    <%# <%= cl_image_tag @product.photos.key, height: 300, width: 400, crop: :fill %> %>
     <p><%= @product.info %></p>
     <p><%= @product.price %></p>
   </div>
