@@ -1,0 +1,15 @@
+<h1>Welcome to <%= @shop %>!</h1>
+<h2>Products</h2>
+  <ul>
+    <% @products.each do |product| %>
+          <%= link_to shop_product_path(product) do %>
+                  <%= cl_image_tag product.photo.key %>
+                    <h5><strong><%= product.name %></strong></h5>
+      <% end %>
+    <% end %>
+  </ul>
+
+<% if policy(@shop).edit? %>
+  <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+  <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
+<% end %>
