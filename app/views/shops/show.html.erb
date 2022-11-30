@@ -22,7 +22,7 @@
           Be the first to leave a review for <%= @shop.name %>
         <% else %>
           <% @shop.reviews.each do |review| %>
-            <%= render "reviews/review", review: review %>
+            <%= render "review", review: review %>
           <% end %>
         <% end %>
     </div>
