@@ -2,8 +2,8 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
 
   def index
-    @country = request.location.country_code
-    @shops = Shop.all
+    # @location = request.location.coordinates
+    # @shops = Shop.all.within 2km of location
   end
 
   def new
