@@ -3,8 +3,11 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @location = request.location.coordinates
-    # @shops = Shop.all.within 2km of location
+    if params[:query].present?
+      @shops = Shop.global_search(params[:query])
+    else
+      @shops = Shop.all
+    end
   end
 
   def new
