@@ -7,6 +7,11 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to #ver ruta
+    else
+      render :new, status: :unprocessable_entity
   end
 
   def show
@@ -20,5 +25,9 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :price, :info)
   end
 end
