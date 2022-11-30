@@ -1,7 +1,30 @@
 .product {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-top: 30px;
+  margin-top: 10px;
   padding: 50px;
-  background-color: #c7c7c7 ;
+  background-color: #e3e3e3 ;
+  height: 70vh;
+}
+
+.image {
+  padding: 20px;
+}
+
+.title {
+  background-color: #d0d0d0;
+  margin-top: 50px;
+  padding: 30px;
+  text-align: center;
+  font-family: lato;
+}
+
+.price {
+ text-align: right;
+}
+
+.info {
+  text-align: center;
+  align-items: center;
+  padding: 10px;
 }

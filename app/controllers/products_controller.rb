@@ -22,19 +22,15 @@ class ProductsController < ApplicationController
     authorize @product
   end
 
-  # # def edit
-  # authorize @product
-  # # end
-
-  # # def update
-  # authorize @product
-  # #   @product.update(product_params)
-  # #   if @product.save
-  # #     redirect_to shop_path(params[:shop_id])
-  # #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
+  def update
+    authorize @product
+    @product.update(product_params)
+    if @product.save
+      redirect_to shop_path(params[:shop_id])
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
   # def destroy
   # authorize @product

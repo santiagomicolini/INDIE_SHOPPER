@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :reservations, only: [:create, :update, :destroy, :index]
-    resources :products, only: [:destroy, :update] do
-    resources :basket_products, only: [:create]
+    resources :products, only: [:destroy, :update, :edit] do
+      resources :basket_products, only: [:create]
   end
 
   resources :basket, only: [:show]
