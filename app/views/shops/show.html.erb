@@ -1,5 +1,6 @@
 <div class="container">
-  <h1>Welcome to <%= @shop %>!</h1>
+  <h1>Welcome to <%= @shop.name %>!</h1>
+  <%= cl_image_tag @shop.user.photo.key %>
   <h2>Products</h2>
     <ul>
       <% @products.each do |product| %>
