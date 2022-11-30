@@ -1,0 +1,12 @@
+<h1>Edit <%= @shop %></h1>
+<%= simple_form_for @shop do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%
+=begin%>
+ <%= f.association :shop_category %>
+<%
+=end%>
+  <%= f.button :submit %>
+<% end %>
