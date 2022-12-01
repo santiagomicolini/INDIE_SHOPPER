@@ -9,6 +9,10 @@ gem "rails", "~> 7.0.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+gem "geocoder"
+
+gem "pundit"
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
@@ -45,6 +49,18 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# Gem faker
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+
+# Gem dotenv
+gem "dotenv-rails", groups: [:development, :test]
+
+# Gem cloudinary
+gem "cloudinary"
+
+# Gem pg_search
+gem "pg_search"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -55,7 +71,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "dotenv-rails"
+  # gem "dotenv-rails"
 
 end
 

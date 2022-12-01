@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Welcome to IndieShopper!</h1>
+  <h1>country = <%= @country %></h1>
+  <%= simple_form_for @shop do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :phone_number %>
+    <%
+  =begin%>
+  <%= f.association :shop_category %>
+  <%
+  =end%>
+    <%= f.button :submit %>
+  <% end %>
+<div>
