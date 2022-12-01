@@ -28,6 +28,8 @@
         </div>
       <% end %>
     </div>
+
+  <%= link_to "Add to basket",  product_basket_products_path(@product), data: {turbo_method: "post"} %>
 </div>
 
 

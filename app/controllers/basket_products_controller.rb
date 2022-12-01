@@ -1,13 +1,17 @@
 class BasketProductsController < ApplicationController
-  def index
-    @basket_user = @basket.find(params[:user_id])
-    @basket_product = basket.find(params[:product_id]) #i have to find a particular product that I click and add it to the index of the basket
-  end
-
   def new
   end
 
   def create
+    if current_user.basket.nil?
+      @basket = Basket.create(user: current_user)
+    else
+      @basket = Basket.find_by(user: current_user)
+    end
+
+    @basket_product = BasketProduct.create(basket: @basket, product_id: params[:product_id])
+    authorize @basket_product
+    redirect_to shops_path
   end
 
   def destroy
