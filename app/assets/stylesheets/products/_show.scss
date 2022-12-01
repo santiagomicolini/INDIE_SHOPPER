@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 10px;
   padding: 50px;
-  background-color: #e3e3e3 ;
+  background-color: #d8d7d7 ;
   height: 70vh;
 }
 
@@ -12,19 +12,25 @@
 }
 
 .title {
-  background-color: #d0d0d0;
+  background-color: #d8d7d7;
   margin-top: 50px;
   padding: 30px;
   text-align: center;
-  font-family: lato;
+  font-family: 'Lato', sans-serif;
 }
 
 .price {
  text-align: right;
+ justify-content: center;
 }
 
 .info {
   text-align: center;
   align-items: center;
   padding: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
 }

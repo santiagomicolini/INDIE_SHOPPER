@@ -1,6 +1,6 @@
 <div class="container">
   <div class= "title">
-    <h3>Have a look to the details of the <strong><%= @product.name %></strong></h3>
+    <h1>Some details for <strong><%= @product.name %></strong></h1>
   </div>
 
 
@@ -10,21 +10,22 @@
     </div>
 
     <div class="info">
-      <h1><%= @product.name %></h1>
+     <h3><strong> <%=  @product.name %> </strong></h3>
       <p><%= @product.info %></p>
     </div>
 
     <div class="price">
-      <h3>$<%=@product.price %></h3>
-      <P>Price for each item</P>
+        <h4>$<%=@product.price %></h4>
+        <P>Price for each item</P>
     </div>
-
-    <% if policy(@product).edit? %>
-      <%= link_to "Edit this product", edit_product_path(@product), class: "btn" if policy(@product).edit?%>
-      <%= link_to "Delete my product", product_path(@product), class:"btn", data: { turbo_method: :delete, turbo_confirm: "are you shur" } if policy(@product).destroy?%>
-    <% end %>
-
   </div>
+
+    <div class="buttons">
+      <% if policy(@product).edit? %>
+        <%= link_to "Edit this product", edit_product_path(@product), class: "btn" if policy(@product).edit?%>
+        <%= link_to "Delete my product", product_path(@product), class: "btn", data: { turbo_method: :delete, turbo_confirm: "are you shur" } if policy(@product).destroy?%>
+      <% end %>
+    </div>
 </div>
 
 
