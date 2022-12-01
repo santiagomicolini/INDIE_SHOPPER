@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :set_shop, only: [:show]
-  before_action :set_product, only: [:show]
+  before_action :set_shop, only: [:show, :edit]
+  before_action :set_product, only: [:show,:edit]
 
   # def new
   #   @product = Product.new
-  # authorize @product
+  #   authorize @product
   # end
 
   # # def create
@@ -22,16 +22,15 @@ class ProductsController < ApplicationController
     authorize @product
   end
 
-  # # def edit
-  # authorize @product
-  # # end
+  # def edit
+  # end
 
-  # # def update
-  # authorize @product
-  # #   @product.update(product_params)
-  # #   if @product.save
-  # #     redirect_to shop_path(params[:shop_id])
-  # #   else
+  # def update
+  #   authorize @product
+  #   @product.update(product_params)
+  #   if @product.save
+  #     redirect_to shop_path(params[:shop_id])
+  #   else
   #     render :new, status: :unprocessable_entity
   #   end
   # end
