@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   # def new
   #   @product = Product.new
-  # authorize @product
+  #   authorize @product
   # end
 
   # # def create
