@@ -16,7 +16,7 @@
    <ul class="product-cards">
       <% @products.each do |product| %>
       <div class="product-card">
-        <%= link_to shop_product_path(product) do %>
+        <%= link_to shop_product_path(@shop, product) do %>
           <%= cl_image_tag product.photos.first.key %>
           <h5><strong><%= product.name %></strong></h5>
           <p><%= product.info %></p>
