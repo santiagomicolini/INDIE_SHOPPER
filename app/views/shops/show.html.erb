@@ -1,26 +1,18 @@
 <div class="container">
-   <h1>Welcome to <%= @shop.name %>!</h1>
-   <%= cl_image_tag @shop.user.photo.key %>
-   <h2>Products</h2>
-   <% if policy(@shop).edit? %>
-   <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
-   <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
-   <% end %>
-   <h2><%= pluralize @shop.reviews.size, "review" %></h2>
-   <div data-controller="insert-in-list">
-      <div data-insert-in-list-target="items">
-         <% if @shop.reviews.blank? %>
-         Be the first to leave a review for <%= @shop.name %>
-         <% else %>
-         <% @shop.reviews.each do |review| %>
-         <%= render "review", review: review %>
-         <% end %>
-         <% end %>
-      </div>
-      <%= render "reviews/form", shop: @shop, review: @review %>
-   </div>
-</div>
+  <div class="shop-card">
+      <%= cl_image_tag @shop.photos.first.key %>
+    <div class="shop-card-info">
+        <h1 class="text-center"><%= @shop.name %></h1>
+        <h4 class="text-center">Address: <%= @shop.address %></h2>
+        <h4 class="text-center">Phone Number: <%= @shop.phone_number %></h2>
+              <% if policy(@shop).edit? %>
+              <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+              <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
+              <% end %>
+    </div>
+  </div>
 
+       <h2 class="text-center">Products</h2>
    <ul class="product-cards">
       <% @products.each do |product| %>
       <div class="product-card">
@@ -33,3 +25,18 @@
       </div>
       <% end %>
    </ul>
+  <h2><%= pluralize @shop.reviews.size, "Review" %></h2>
+   <div data-controller="insert-in-list">
+      <div data-insert-in-list-target="items">
+         <% if @shop.reviews.blank? %>
+         Be the first to leave a review for <%= @shop.name %>
+         <% else %>
+         <% @shop.reviews.each do |review| %>
+         <%= render "review", review: review %>
+         <% end %>
+         <% end %>
+      </div>
+      <%= render "reviews/form", shop: @shop, review: @review %>
+   </div>
+
+</div>
