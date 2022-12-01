@@ -8,6 +8,12 @@ class ShopsController < ApplicationController
     else
       @shops = Shop.all
     end
+    @markers = @shops.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def new
@@ -48,7 +54,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :phone_number)
+    params.require(:shop).permit(:name, :address, :phone_number, photos: [])
   end
 
   def set_shop
