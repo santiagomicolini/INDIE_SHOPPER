@@ -1,14 +1,33 @@
 <div class="container">
   <div class= "title">
-    <h3>Products</h3>
-
+    <h1>Some details for <strong><%= @product.name %></strong></h1>
   </div>
+
 
   <div class="product">
-    <h1><%= @product.name %></h1>
-    <p><%= @product.info %></p>
-    <p><%= @product.price %></p>
+    <div class="image">
+      <%= cl_image_tag @product.photos.first.key, height: 400, width: 500, crop: :fill %>
+    </div>
+
+    <div class="info">
+     <h3><strong> <%=  @product.name %> </strong></h3>
+      <p><%= @product.info %></p>
+    </div>
+
+    <div class="price">
+        <h4>$<%=@product.price %></h4>
+        <P>Price for each item</P>
+    </div>
   </div>
+
+    <div class="buttons">
+      <% if policy(@product).edit? %>
+        <div class="space">
+          <%= link_to "Edit this product", edit_product_path(@product), class: "btn" if policy(@product).edit?%>
+          <%= link_to "Delete my product", product_path(@product), class: "btn", data: { turbo_method: :delete, turbo_confirm: "are you shur" } if policy(@product).destroy?%>
+        </div>
+      <% end %>
+    </div>
 </div>
 
 
