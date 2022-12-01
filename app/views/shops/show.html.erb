@@ -1,18 +1,19 @@
-<div class="container">
-  <div class="shop-card">
-      <%= cl_image_tag @shop.photos.first.key %>
-    <div class="shop-card-info">
-        <h1 class="text-center"><%= @shop.name %></h1>
-        <h4 class="text-center">Address: <%= @shop.address %></h2>
-        <h4 class="text-center">Phone Number: <%= @shop.phone_number %></h2>
-              <% if policy(@shop).edit? %>
-              <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
-              <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
-              <% end %>
-    </div>
+<div class="shop-card" style="background-image: url('<%= cl_image_path @shop.photos.first.key %>');">
+  <div class="shop-card-text">
+      <h1><%= @shop.name %></h1>
+      <h4>Address: <%= @shop.address %></h4>
+      <h4>Phone Number: <%= @shop.phone_number %></h4>
+      <% if policy(@shop).edit? %>
+      <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+      <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
+      <% end %>
   </div>
+</div>
 
-       <h2 class="text-center">Products</h2>
+<div class="container">
+<hr>
+  <h2 class="text-center">Products</h2>
+<hr>
    <ul class="product-cards">
       <% @products.each do |product| %>
       <div class="product-card">
@@ -25,6 +26,7 @@
       </div>
       <% end %>
    </ul>
+  <hr>
   <h2><%= pluralize @shop.reviews.size, "Review" %></h2>
    <div data-controller="insert-in-list">
       <div data-insert-in-list-target="items">
@@ -38,5 +40,4 @@
       </div>
       <%= render "reviews/form", shop: @shop, review: @review %>
    </div>
-
 </div>

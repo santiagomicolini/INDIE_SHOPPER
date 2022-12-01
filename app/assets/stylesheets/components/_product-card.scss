@@ -6,7 +6,13 @@
 
 
 a {
-  text-decoration: none;
+    text-decoration: none;
+    color: #3E4C53;
+}
+
+a:hover {
+  color: $yellow-green-color-wheel;
+  transition: 0.3s;
 }
 
 .product-card {
