@@ -3,7 +3,7 @@
   <h2>Products</h2>
     <ul>
       <% @products.each do |product| %>
-            <%= link_to shop_product_path(product) do %>
+            <%= link_to shop_product_path(@shop, product) do %>
                     <%
 =begin%>
  <%= cl_image_tag product.photo.key %>
