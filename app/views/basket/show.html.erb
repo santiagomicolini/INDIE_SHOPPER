@@ -3,13 +3,13 @@
   <div class="container">
     <div class="basket">
       <%= cl_image_tag product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
-      <p class="text"><%= product.name %></p>
-      <p class="text"><%= product.info %></p>
-      <p class="price">$<%= product.price %> <%total << product.price%></p>
+      <p class="basket-text"><%= product.name %></p>
+      <p class="basket-text"><%= product.info %></p>
+      <p class="basket-price">$<%= product.price %> <%total << product.price%></p>
     </div>
       <hr>
   </div>
 <% end %>
-<div class="total">
+<div class="basket-total">
   <p> Total = <%= total.sum %></p>
 </div>
