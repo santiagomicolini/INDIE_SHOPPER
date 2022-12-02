@@ -11,7 +11,8 @@ class BasketProductsController < ApplicationController
 
     @basket_product = BasketProduct.create(basket: @basket, product_id: params[:product_id])
     authorize @basket_product
-    redirect_to shops_path
+    redirect_to basket_path(@basket)
+    flash[:notice] = "Product added"
   end
 
   def destroy
