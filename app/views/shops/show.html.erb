@@ -22,7 +22,12 @@
               <%= cl_image_tag product.photos.first.key %>
               <h5><strong><%= product.name %></strong></h5>
               <p><%= product.info %></p>
-              <p>€<%= product.price.to_i %></p>
+              <div class="price-icon">
+                <p>€<%= product.price.to_i %></p>
+              </div>
+              <div class="basket-icon">
+                <i class="fa-solid fa-basket-shopping"></i>
+              </div>
             <% end %>
           </div>
           <% end %>
