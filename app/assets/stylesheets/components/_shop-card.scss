@@ -1,12 +1,12 @@
 .shop-card {
   height: 250px;
   position: relative;
-  margin-bottom: 150px;
+  margin-bottom: 96px;
 }
 
 .shop-card-text {
   position: absolute;
-  top: 247px;
+  top: 100px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -21,4 +21,6 @@
   justify-content: center;
   color: #3E4C53;
   border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
 }

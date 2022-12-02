@@ -11,33 +11,40 @@
 </div>
 
 <div class="container">
-<hr>
-  <h2 class="text-center">Products</h2>
-<hr>
-   <ul class="product-cards">
-      <% @products.each do |product| %>
-      <div class="product-card">
-        <%= link_to shop_product_path(@shop, product) do %>
-          <%= cl_image_tag product.photos.first.key %>
-          <h5><strong><%= product.name %></strong></h5>
-          <p><%= product.info %></p>
-          <p><%= product.price %></p>
-        <% end %>
+  <div class="products-container">
+    <hr>
+      <h2 class="text-center">Products</h2>
+    <hr>
+      <ul class="product-cards">
+          <% @products.each do |product| %>
+          <div class="product-card">
+            <%= link_to shop_product_path(@shop, product) do %>
+              <%= cl_image_tag product.photos.first.key %>
+              <h5><strong><%= product.name %></strong></h5>
+              <p><%= product.info %></p>
+              <p>€<%= product.price.to_i %></p>
+            <% end %>
+          </div>
+          <% end %>
+      </ul>
+    <hr>
+  </div>
+  <div class="reviews-container">
+    <h2 class="text-center review-title"><%= pluralize @shop.reviews.size, "Review" %></h2>
+    <div data-controller="insert-in-list">
+        <div data-insert-in-list-target="items">
+          <% if @shop.reviews.blank? %>
+          Be the first to leave a review for <%= @shop.name %>
+          <% else %>
+          <% @shop.reviews.each do |review| %>
+              <%= render "review", review: review %>
+            <hr>
+          <% end %>
+          <% end %>
+        </div>
+      <div class="review-form">
+        <%= render "reviews/form", shop: @shop, review: @review %>
       </div>
-      <% end %>
-   </ul>
-  <hr>
-  <h2><%= pluralize @shop.reviews.size, "Review" %></h2>
-   <div data-controller="insert-in-list">
-      <div data-insert-in-list-target="items">
-         <% if @shop.reviews.blank? %>
-         Be the first to leave a review for <%= @shop.name %>
-         <% else %>
-         <% @shop.reviews.each do |review| %>
-         <%= render "review", review: review %>
-         <% end %>
-         <% end %>
-      </div>
-      <%= render "reviews/form", shop: @shop, review: @review %>
-   </div>
+    </div>
+  </div>
 </div>
