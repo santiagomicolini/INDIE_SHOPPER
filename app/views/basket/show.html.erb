@@ -5,11 +5,16 @@
       <%= cl_image_tag product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
       <p class="basket-text"><%= product.name %></p>
       <p class="basket-text"><%= product.info %></p>
-      <p class="basket-price">$<%= product.price %> <%total << product.price%></p>
+      <div class="delete-item basket-text">
+      <p class="basket-price basket-text">$<%= product.price %> <%total << product.price%> </p>
+      <%= link_to basket_product_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do  %>
+        <i class="fa-solid fa-trash"></i>
+        <% end %>
+      </div>
     </div>
       <hr>
   </div>
 <% end %>
 <div class="basket-total">
-  <p> Total = <%= total.sum %></p>
+  <p> Total basket = $<%= total.sum %></p>
 </div>
