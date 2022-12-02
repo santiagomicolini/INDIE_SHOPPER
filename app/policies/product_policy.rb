@@ -6,14 +6,14 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    true
   end
 
   def update?
-    record.user == user
+    true
   end
 
   def destroy?
-    record.user == user
+    true
   end
 end

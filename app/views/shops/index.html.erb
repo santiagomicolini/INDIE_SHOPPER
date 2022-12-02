@@ -1,18 +1,52 @@
-<%= form_with url: shops_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
+<%= form_with url: shops_path, method: :get, class: "d-flex container mt-4 gap-2" do %>
+<%= text_field_tag :query,
     params[:query],
     class: "form-control",
-    placeholder: "Find a shop"
+    placeholder: "Type a product, shop or address"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+<%= submit_tag "Search", class: "btn" %>
 <% end %>
 
-<% @shops.each do |shop| %>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"><%= shop.name %></h5>
-      <p class="card-text"><%= shop.address %></p>
-      <p class="card-text"><%= shop.phone_number %></p>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-7">
+      <% @shops.each do |shop| %>
+      <%= link_to shop_path(shop) do %>
+      <div class="card-product mb-3 rounded">
+
+        <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
+          data-bs-interval="false">
+          <div class="carousel-inner">
+            <% shop.photos.each do |photo| %>
+            <div class="carousel-item active">
+              <%= cl_image_tag photo.key %>
+            </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div class="card-product-infos">
+          <h5><%= shop.name %></h5>
+          <p><%= shop.address %></p>
+          <p><%= shop.phone_number %></p>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div id="map" class="col-5 rounded" data-controller="map" data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-<% end %>
+</div>

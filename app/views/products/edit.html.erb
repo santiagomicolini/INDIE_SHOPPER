@@ -1,7 +1,8 @@
-<%= simple_form_for(@product) do |f| %>
+<%= simple_form_for [@shop, @product] do |f| %>
   <%= f.input :name %>
   <%= f.input :price %>
   <%= f.input :info %>
+  <%= f.association :product_category, collection: ProductCategory.all.map {|category| [category.id, category.product_category_name]}, label_method: :second, value_method: :first %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
+  <%= f.button :submit %>
 <% end %>
