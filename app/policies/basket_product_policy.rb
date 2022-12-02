@@ -8,4 +8,8 @@ class BasketProductPolicy < ApplicationPolicy
   def create?
     record.basket.user == user
   end
+
+  def destroy?
+    record.basket.user == user
+  end
 end

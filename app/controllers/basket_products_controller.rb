@@ -1,6 +1,4 @@
 class BasketProductsController < ApplicationController
-  def new
-  end
 
   def create
     if current_user.basket.nil?
@@ -16,5 +14,11 @@ class BasketProductsController < ApplicationController
   end
 
   def destroy
+    @product = BasketProduct.find_by(product_id: params[:id])
+    authorize @product
+    @product.destroy
+    flash[:notice] = "Item deleted"
+    @basket = Basket.find_by(user: current_user)
+    redirect_to basket_path(@basket)
   end
 end
