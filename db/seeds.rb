@@ -36,7 +36,7 @@ end
 30.times do
   shop = Shop.new(
     name: Faker::Company.name,
-    address: Faker::Address.full_address,
+    address: Faker::Address.state,
     phone_number: Faker::PhoneNumber.cell_phone_in_e164,
     website: Faker::Internet.url,
     user: User.all.sample,
