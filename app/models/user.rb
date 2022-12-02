@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :shops, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :baskets, dependent: :destroy
+  has_one :basket, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
 
