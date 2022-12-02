@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+
 *{
   margin: 0;
   padding: 0;
@@ -8,14 +9,13 @@
 }
 
 .cards-container{
-  width: 90%;
   display: flex;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+
 }
 
-.home-card{
-  height: 300px;
-}
 
 .homepage-container{
   position: relative;
@@ -74,12 +74,14 @@ header .navigation a:hover{
 }
 
 .content .info h1{
+  margin: auto;
   color: $sheen-green;
   font-size: 60px;
   font-weight: 800;
   letter-spacing: 1px;
   margin-bottom: 20px;
   text-transform: capitalize;
+  text-align: center;
 }
 
 .content .info h2{
@@ -89,6 +91,8 @@ header .navigation a:hover{
   letter-spacing: 2px;
   line-height: 60px;
   margin-bottom: 30px;
+  text-align: center;
+
 }
 
 .content .info h2 span{
@@ -255,4 +259,43 @@ input[type=text]:focus {
   .content .info p{
     font-size: 14px;
   }
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid $sheen-green;
+  border-right: none;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  border: 1px solid $sheen-green;
+  background: $sheen-green;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
