@@ -1,14 +1,22 @@
 .product {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
-  padding: 50px;
-  background-color: #d8d7d7 ;
+  // background-color: #d8d7d7 ;
   height: 65vh;
+  padding-left: 0;
+  position: relative;
 }
 
-.image {
-  padding: 20px;
+.basket-icon {
+  position: absolute;
+  bottom: -11px;
+  right: 85px;
+}
+
+.product img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .title {
@@ -20,18 +28,48 @@
 }
 
 .price {
- text-align: right;
- justify-content: center;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ width: 200px;
 }
 
 .info {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding: 0 20px;
 }
 
 .buttons {
   display: flex;
   justify-content: flex-end;
   margin: 10px;
+}
+
+.shop-card {
+  height: 250px;
+  position: relative;
+  margin-bottom: 96px;
+}
+
+.shop-card-text {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 250px;
+  width: 716px;
+  text-align: center;
+  background-color: #ebf2fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #3E4C53;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
