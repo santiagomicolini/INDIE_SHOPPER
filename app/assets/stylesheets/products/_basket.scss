@@ -1,0 +1,21 @@
+.basket {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 0.5fr;
+  align-items: flex-end ;
+}
+
+.price {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.text {
+  display: flex;
+  align-items: flex-end;
+}
+
+.total {
+  display: flex;
+  justify-content: flex-end;
+}
