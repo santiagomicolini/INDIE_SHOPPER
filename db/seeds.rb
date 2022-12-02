@@ -9,8 +9,8 @@ Product.destroy_all
 Review.destroy_all
 
 # Create 50 users
-50.times do
-  file = URI.open("https://loremflickr.com/320/240/face")
+20.times do
+  file = URI.open("https://source.unsplash.com/random/?face")
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -43,8 +43,8 @@ end
     shop_category: ShopCategory.all.sample
   )
   shop.save!
-  shop.photos.attach(io: URI.open("https://loremflickr.com/600/600/shop"), filename: "#{shop.name}.png", content_type: "image/png")
-  shop.photos.attach(io: URI.open("https://loremflickr.com/600/600/shop"), filename: "#{shop.name}.png", content_type: "image/png")
+  shop.photos.attach(io: URI.open("https://source.unsplash.com/random/?shop"), filename: "#{shop.name}.png", content_type: "image/png")
+  shop.photos.attach(io: URI.open("https://source.unsplash.com/random/?shop"), filename: "#{shop.name}.png", content_type: "image/png")
   puts "#{shop.name} created!"
 end
 
@@ -66,8 +66,9 @@ end
     shop: Shop.all.sample,
     product_category: ProductCategory.all.sample
   )
-  product.photos.attach(io: URI.open("https://loremflickr.com/600/600/shop"), filename: "#{product.name}.png", content_type: "image/png")
-  product.photos.attach(io: URI.open("https://loremflickr.com/600/600/shop"), filename: "#{product.name}.png", content_type: "image/png")
+  arr = product.name.split(" ")
+  product.photos.attach(io: URI.open("https://source.unsplash.com/random/?#{arr[2]}"), filename: "#{product.name}.png", content_type: "image/png")
+  product.photos.attach(io: URI.open("https://source.unsplash.com/random/?#{arr[2]}"), filename: "#{product.name}.png", content_type: "image/png")
   product.save!
   puts "#{product.name} created!"
 end
