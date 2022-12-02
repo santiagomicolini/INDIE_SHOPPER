@@ -1,45 +1,55 @@
-<div class="container">
-  <h1>Welcome to <%= @shop %>!</h1>
-  <h2>Products</h2>
-    <ul>
-      <% @products.each do |product| %>
-            <%= link_to shop_product_path(@shop, product) do %>
-                    <%
-=begin%>
- <%= cl_image_tag product.photo.key %>
-<%
-=end%>
-                      <h5><strong><%= product.name %></strong></h5>
-        <% end %>
+<div class="shop-card" style="background-image: url('<%= cl_image_path @shop.photos.first.key %>');">
+  <div class="shop-card-text">
+      <h1><%= @shop.name %></h1>
+      <h4>Address: <%= @shop.address %></h4>
+      <h4>Phone Number: <%= @shop.phone_number %></h4>
+      <% if policy(@shop).edit? %>
+      <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+      <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
       <% end %>
-    </ul>
-
-  <% if policy(@shop).edit? %>
-    <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
-    <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
-  <% end %>
-
-<h2><%= pluralize @shop.reviews.size, "review" %></h2>
-
-<div>
-  <% if @shop.reviews.blank? %>
-    Be the first to leave a review for <%= @shop.name %>
-  <% else %>
-    <% @shop.reviews.each do |review| %>
-      <p><%= review.content %></p>
-    <% end %>
-  <% end %>
+  </div>
 </div>
 
-  <div data-controller="insert-in-list">
-    <div data-insert-in-list-target="items">
-      <!-- [...] -->
+<div class="container">
+  <div class="products-container">
+    <hr>
+      <h2 class="text-center">Products</h2>
+    <hr>
+      <ul class="product-cards">
+          <% @products.each do |product| %>
+          <div class="product-card">
+            <%= link_to shop_product_path(@shop, product) do %>
+              <%= cl_image_tag product.photos.first.key %>
+              <h5><strong><%= product.name %></strong></h5>
+              <p><%= product.info %></p>
+              <div class="price-icon">
+                <p>€<%= product.price.to_i %></p>
+              </div>
+              <div class="basket-icon">
+                <i class="fa-solid fa-basket-shopping"></i>
+              </div>
+            <% end %>
+          </div>
+          <% end %>
+      </ul>
+    <hr>
+  </div>
+  <div class="reviews-container">
+    <h2 class="text-center review-title"><%= pluralize @shop.reviews.size, "Review" %></h2>
+    <div data-controller="insert-in-list">
+        <div data-insert-in-list-target="items">
+          <% if @shop.reviews.blank? %>
+          Be the first to leave a review for <%= @shop.name %>
+          <% else %>
+          <% @shop.reviews.each do |review| %>
+              <%= render "review", review: review %>
+            <hr>
+          <% end %>
+          <% end %>
+        </div>
+      <div class="review-form">
+        <%= render "reviews/form", shop: @shop, review: @review %>
+      </div>
     </div>
-    <%= simple_form_for([@shop, @review],
-      data: {insert_in_list_target: "form"}) do |f|
-    %>
-      <%= f.input :content %>
-      <%= f.button :submit %>
-    <% end %>
   </div>
 </div>
