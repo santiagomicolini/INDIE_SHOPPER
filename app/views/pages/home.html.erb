@@ -12,21 +12,23 @@
           <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
 
-        <div>
+
           <button type="button" class="btn btn-outline-primary me-2">Login</button>
           <button type="button" class="btn btn-primary" href="/users/sign_in">Register</button>
-        </div>
+
       </header>
 
       <div class="homepage-container">
         <div class="content">
           <div class="info">
-            <h1>Indieshopper</h1>
+            <h1>IndieShopper</h1>
             <h2>Shop from local independent stores!</h2>
-            <%= form_with url: shops_path, method: :get, class: "d-flex container mt-4 gap-2" do %>
-            <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a product, shop or address"%>
-            <%= submit_tag "Search", class: "btn" %>
-            <% end %>
+            <div class="homepage-searchbar">
+              <%= form_with url: shops_path, method: :get, class: "d-flex container mt-4 gap-2" do %>
+              <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a product, shop or address"%>
+              <%= submit_tag "Search", class: "btn" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
