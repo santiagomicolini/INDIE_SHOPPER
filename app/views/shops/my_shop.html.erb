@@ -1,0 +1,29 @@
+<div class="shop-card" style="background-image: url('<%= cl_image_path @shop.photos.first.key %>');">
+  <div class="shop-card-text">
+      <h1><%= @shop.name %></h1>
+      <h4>Address: <%= @shop.address %></h4>
+      <h4>Phone Number: <%= @shop.phone_number %></h4>
+      <% if policy(@shop).edit? %>
+      <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+      <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
+      <% end %>
+  </div>
+</div>
+<div class="container">
+  <div class="pending-reservations">
+      <% @reservations.each do |reservation| %>
+      <% reservation.reservation_products.each do |product| %>
+          <div class="reservations">
+            <%= cl_image_tag product.product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
+            <p class="reservations-text"><%= product.product.name %></p>
+            <p class="reservations-status">Status: <%= product.reservation.status %></p>
+              <%= simple_form_for product.reservation, data: { turbo_method: "patch" } do |f| %>
+                  <%= f.input :status,     as: :select %>
+                  <%= f.button :submit %>
+                <% end %>
+          </div>
+          <hr>
+    <% end %>
+  <% end %>
+  </div>
+</div>
