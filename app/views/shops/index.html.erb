@@ -1,15 +1,28 @@
 <%= form_with url: shops_path, method: :get, class: "d-flex container mt-4 gap-2" do %>
-<%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Type a product, shop or address"
-  %>
-<%= submit_tag "Search", class: "btn" %>
+  <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Type a product, shop or address"
+    %>
+  <%= submit_tag "Search", class: "btn" %>
 <% end %>
-<div class="container d-flex align-items-baseline mt-4">
-<h3>Local Indieshops around</h3>
-<p style="color: #006400ff">&nbsp&nbsp<%= @shops.count %> indieshops found</p>
+
+<div>
+  <% @categories.each do |category| %>
+    <% if params[:category]&.include?(category.id.to_s)%>
+      <strong><%= link_to category.shop_category_name, shops_path(category: params[:category] - [category.id.to_s])%></strong>
+    <% else %>
+       <%= link_to category.shop_category_name, shops_path(category: params[:category] ? params[:category] + [category.id] : [category.id])%>
+    <% end %>
+  <% end %>
 </div>
+
+
+<div class="container d-flex align-items-baseline mt-4">
+  <h3>Local Indieshops around</h3>
+  <p style="color: #006400ff">&nbsp;&nbsp;<%= @shops.count %> indieshops found</p>
+</div>
+
 <hr class="container mt-2">
 <div class="container mt-4">
   <div class="row">
