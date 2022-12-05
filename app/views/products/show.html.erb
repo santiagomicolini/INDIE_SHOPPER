@@ -16,9 +16,11 @@
 
     <div class="price">
         <h4>€<%=@product.price.to_i %></h4>
+    <div>
+      <%= link_to product_basket_products_path(@product), data: {turbo_method: "post"} do %>
+         <i class="fa-solid fa-basket-shopping"></i>
+      <% end %>
     </div>
-    <div class="basket-icon">
-      <i class="fa-solid fa-basket-shopping"></i>
     </div>
   </div>
 <hr class="product-hr">
@@ -30,6 +32,4 @@
         </div>
       <% end %>
     </div>
-
-  <%= link_to "Add to basket",  product_basket_products_path(@product), data: {turbo_method: "post"} %>
 </div>
