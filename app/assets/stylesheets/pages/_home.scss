@@ -10,12 +10,11 @@
 
 
 .homepage-container{
-  position: relative;
-  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   background-image: url(bg.jpg);
   background-size: cover;
   background-position:center;
@@ -25,14 +24,14 @@ header{
   position: relative;
   top: 0;
   width: 100%;
-  padding: 30px 100px;
+  padding: 30px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 header .logo{
-  position: relative;
+  // position: relative;
   color: #000;
   font-size: 30px;
   text-decoration: none;
@@ -52,8 +51,16 @@ header .navigation a{
   transition-property: background;
 }
 
+// header .navigation {
+//   display: flex;
+// }
+
 header .navigation a:not(:last-child){
   margin-right: 30px;
+}
+
+.homepage-searchbar {
+  display: flex;
 }
 
 header .navigation a:hover{
