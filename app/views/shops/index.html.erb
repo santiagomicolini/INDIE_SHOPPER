@@ -7,10 +7,10 @@
   <%= submit_tag "Search", class: "btn" %>
 <% end %>
 
-<div>
+<div class= "container filter-container">
   <% @categories.each do |category| %>
     <% if params[:category]&.include?(category.id.to_s)%>
-      <strong><%= link_to category.shop_category_name, shops_path(category: params[:category] - [category.id.to_s])%></strong>
+        <%= link_to category.shop_category_name, shops_path(category: params[:category] - [category.id.to_s]), class: "filter-apply"%>
     <% else %>
        <%= link_to category.shop_category_name, shops_path(category: params[:category] ? params[:category] + [category.id] : [category.id])%>
     <% end %>

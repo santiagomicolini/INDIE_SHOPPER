@@ -1,0 +1,18 @@
+.filter-apply {
+  color: #006400ff;
+}
+
+.filter-container {
+  margin-top: 10px;
+  outline: 1px solid red;
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+  font-size: 12px;
+}
+
+.filter-container a {
+  width: fit-content;
+  white-space: nowrap;
+  margin: 0 10px;
+}
