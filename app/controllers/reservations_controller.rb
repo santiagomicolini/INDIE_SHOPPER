@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   def create
     @basket.products.each do |product|
       @reservation = Reservation.find_by(user: current_user, shop: product.shop)
-      if @reservation
+      if @reservation.status == "Pending"
         authorize @reservation
         ReservationProduct.create(product: product, reservation: Reservation.find_by(user: current_user, shop: product.shop))
       else
@@ -28,7 +28,10 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     authorize @reservation
     @reservation.update(status: params[:reservation][:status])
-
+    # Respond to the AJAX request with the updated status
+    respond_to do |format|
+      format.json { render json: { status: @reservation.status } }
+    end
   end
 
 private

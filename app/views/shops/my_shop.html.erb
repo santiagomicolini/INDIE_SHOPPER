@@ -13,33 +13,27 @@
   <div class="pending-reservations">
 
     <div data-controller="collapsable-cards">
-      <% @reservations.each do |reservation| %>
-        <div class="reservations">
-          <h2>Reservation ID: <%= reservation.id %></h2>
-          <p class="reservations-status">Items: <%= reservation.reservation_products.count %></p>
-          <p class="reservations-status">Status: <%= reservation.status %></p>
-          <p class="reservations-status">Created at: <%= reservation.created_at.strftime("%m/%d/%Y %H:%M") %></p>
-          <button data-action="click->collapsable-cards#toggle" data-reservation="<%= reservation.id %>">Show items:</button>
-        </div>
-        <hr>
-
-        <div data-collapsable-cards-target="cards" class="hidden" data-cards="<%= reservation.id %>">
-        <% reservation.reservation_products.each do |product| %>
-
-          <div class="reservation-items">
-            <%= cl_image_tag product.product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
-            <p class="reservations-text"><%= product.product.name %></p>
-            <p class="reservations-status">Status: <%= product.reservation.status %></p>
-                <%= simple_form_for product.reservation, data: { turbo_method: "patch" } do |f| %>
-                  <%= f.input :status, collection: Reservation.statuses.keys, prompt: "Update status" %>
-                  <%= f.button :submit %>
-                <% end %>
-          </div>
-          <hr>
-
-        <% end %>
-          </div>
-        <% end %>
-    </div>
+<% statuses = ["Pending", "Confirmed", "Rejected", "Collected"] %>
+ <% statuses.each do |status| %>
+  <h2><%= status %> Reservations:</h2>
+    <% reservations_with_status = @reservations.select { |r| r.status == status } %>
+    <% if reservations_with_status.any? %>
+      <% reservations_with_status.each do |reservation| %>
+        <%= render partial: "reservation", locals: { reservation: reservation } %>
+      <% end %>
+    <% else %>
+      <%= render partial: "no-reservations", locals: { status: status } %>
+    <% end %>
+ <% end %>
+</div>
   </div>
 </div>
+<script>
+  $(document).on('ajax:success', function(event) {
+    // Get the updated status from the AJAX response
+    var updatedStatus = event.detail[0].status;
+
+    // Update the page with the new status
+    $('#status-display').text(updatedStatus);
+  });
+</script>
