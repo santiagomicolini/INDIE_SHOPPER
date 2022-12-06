@@ -1,4 +1,4 @@
-.reservations {
+.reservation-items, .reservations {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,9 +10,7 @@
   align-items: flex-end;
 }
 
-.reservations-status {
 
-}
 
 .reservations-text {
   display: flex;

@@ -11,20 +11,35 @@
 </div>
 <div class="container">
   <div class="pending-reservations">
+
+    <div data-controller="collapsable-cards">
       <% @reservations.each do |reservation| %>
-      <% reservation.reservation_products.each do |product| %>
-          <div class="reservations">
+        <div class="reservations">
+          <h2>Reservation ID: <%= reservation.id %></h2>
+          <p class="reservations-status">Items: <%= reservation.reservation_products.count %></p>
+          <p class="reservations-status">Status: <%= reservation.status %></p>
+          <p class="reservations-status">Created at: <%= reservation.created_at.strftime("%m/%d/%Y %H:%M") %></p>
+          <button data-action="click->collapsable-cards#toggle" data-reservation="<%= reservation.id %>">Show items:</button>
+        </div>
+        <hr>
+
+        <div data-collapsable-cards-target="cards" class="hidden" data-cards="<%= reservation.id %>">
+        <% reservation.reservation_products.each do |product| %>
+
+          <div class="reservation-items">
             <%= cl_image_tag product.product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
             <p class="reservations-text"><%= product.product.name %></p>
             <p class="reservations-status">Status: <%= product.reservation.status %></p>
-
-              <%= simple_form_for product.reservation, data: { turbo_method: "patch" } do |f| %>
+                <%= simple_form_for product.reservation, data: { turbo_method: "patch" } do |f| %>
                   <%= f.input :status, collection: Reservation.statuses.keys, prompt: "Update status" %>
                   <%= f.button :submit %>
                 <% end %>
           </div>
           <hr>
-    <% end %>
-  <% end %>
+
+        <% end %>
+          </div>
+        <% end %>
+    </div>
   </div>
 </div>
