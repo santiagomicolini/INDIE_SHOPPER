@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_basket
+  before_action :set_basket, only: [:create]
 
   def create
     @basket.products.each do |product|
@@ -27,7 +27,8 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     authorize @reservation
-    @reservation.update(status: params[:status])
+    @reservation.update(status: params[:reservation][:status])
+
   end
 
 private

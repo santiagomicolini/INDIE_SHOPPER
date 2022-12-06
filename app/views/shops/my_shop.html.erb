@@ -17,8 +17,9 @@
             <%= cl_image_tag product.product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
             <p class="reservations-text"><%= product.product.name %></p>
             <p class="reservations-status">Status: <%= product.reservation.status %></p>
+
               <%= simple_form_for product.reservation, data: { turbo_method: "patch" } do |f| %>
-                  <%= f.input :status,     as: :select %>
+                  <%= f.input :status, collection: Reservation.statuses.keys, prompt: "Update status" %>
                   <%= f.button :submit %>
                 <% end %>
           </div>
