@@ -14,7 +14,11 @@
 
             </div>
             <div class="navbar-nav">
-                <%= link_to "Basket", basket_path(current_user.basket), class: "nav-item nav-link" %>
+                <% if user_signed_in? %>
+                  <%= link_to "Basket", basket_path(current_user.basket), class: "nav-item nav-link" %>
+                  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-item nav-link" %>
+
+                <% end %>
                 <a href="/users/sign_in" class="nav-item nav-link">Login</a>
                 <a href="/users/sign_up" class="nav-item nav-link">Register</a>
             </div>
