@@ -64,3 +64,9 @@
         <% end %>
     </div>
 </div>
+
+<% if @chat %>
+<%= render "chats/show", chat: @chat %>
+<% else %>
+<%= link_to "Start chatting", shop_chats_path(@shop), data: { turbo_method: :post } %>
+<% end %>

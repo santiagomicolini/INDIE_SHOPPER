@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :shops do
     resources :products, only: [:new, :create, :edit, :show]
     resources :reviews, only: [:create]
+    resources :chats, only: :create
   end
+
 
   resources :reservations, only: [:new, :create, :update, :destroy, :index]
     resources :products, only: [:destroy, :update, :edit] do
@@ -14,5 +16,8 @@ Rails.application.routes.draw do
 
   resources :basket, only: [:show]
   resources :basket_products, only: [:destroy]
+  resources :chats, only: :show do
+    resources :messages, only: [:create]
+  end
   get "/my_shop", to: "shops#my_shop"
 end

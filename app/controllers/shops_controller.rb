@@ -43,6 +43,10 @@ class ShopsController < ApplicationController
     authorize @shop
     @products = @shop.products
     @review = Review.new
+    @message = Message.new
+    if @chat = current_user.chats.find { |chat| chat.users.include?(@shop.user) }
+      @chat
+    end
   end
 
   def edit
