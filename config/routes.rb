@@ -5,13 +5,17 @@ Rails.application.routes.draw do
   resources :shops do
     resources :products, only: [:new, :create, :edit, :show]
     resources :reviews, only: [:create]
+    resources :chats, only: :create
   end
 
   resources :reservations, only: [:create, :update, :destroy, :index]
-    resources :products, only: [:destroy, :update, :edit] do
-      resources :basket_products, only: [:create]
+  resources :products, only: [:destroy, :update, :edit] do
+    resources :basket_products, only: [:create]
   end
 
   resources :basket, only: [:show]
   resources :basket_products, only: [:destroy]
+  resources :chats, only: :show do
+    resources :messages, only: [:create]
+  end
 end

@@ -1,55 +1,61 @@
 <div class="shop-card" style="background-image: url('<%= cl_image_path @shop.photos.first.key %>');">
   <div class="shop-card-text">
-      <h1><%= @shop.name %></h1>
-      <h4>Address: <%= @shop.address %></h4>
-      <h4>Phone Number: <%= @shop.phone_number %></h4>
-      <% if policy(@shop).edit? %>
-      <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
-      <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
-      <% end %>
+    <h1><%= @shop.name %></h1>
+    <h4>Address: <%= @shop.address %></h4>
+    <h4>Phone Number: <%= @shop.phone_number %></h4>
+    <% if policy(@shop).edit? %>
+    <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+    <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
+    <% end %>
   </div>
 </div>
 
 <div class="container">
   <div class="products-container">
     <hr>
-      <h2 class="text-center">Products</h2>
+    <h2 class="text-center">Products</h2>
     <hr>
-      <ul class="product-cards">
-          <% @products.each do |product| %>
-          <div class="product-card">
-            <%= link_to shop_product_path(@shop, product) do %>
-              <%= cl_image_tag product.photos.first.key %>
-              <h5><strong><%= product.name %></strong></h5>
-              <p><%= product.info %></p>
-              <div class="price-icon">
-                <p>€<%= product.price.to_i %></p>
-              </div>
-              <div class="basket-icon">
-                <i class="fa-solid fa-basket-shopping"></i>
-              </div>
-            <% end %>
-          </div>
-          <% end %>
-      </ul>
+    <ul class="product-cards">
+      <% @products.each do |product| %>
+      <div class="product-card">
+        <%= link_to shop_product_path(@shop, product) do %>
+        <%= cl_image_tag product.photos.first.key %>
+        <h5><strong><%= product.name %></strong></h5>
+        <p><%= product.info %></p>
+        <div class="price-icon">
+          <p>€<%= product.price.to_i %></p>
+        </div>
+        <div class="basket-icon">
+          <i class="fa-solid fa-basket-shopping"></i>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </ul>
     <hr>
   </div>
   <div class="reviews-container">
     <h2 class="text-center review-title"><%= pluralize @shop.reviews.size, "Review" %></h2>
     <div data-controller="insert-in-list">
-        <div data-insert-in-list-target="items">
-          <% if @shop.reviews.blank? %>
-          Be the first to leave a review for <%= @shop.name %>
-          <% else %>
-          <% @shop.reviews.each do |review| %>
-              <%= render "review", review: review %>
-            <hr>
-          <% end %>
-          <% end %>
-        </div>
+      <div data-insert-in-list-target="items">
+        <% if @shop.reviews.blank? %>
+        Be the first to leave a review for <%= @shop.name %>
+        <% else %>
+        <% @shop.reviews.each do |review| %>
+        <%= render "review", review: review %>
+        <hr>
+        <% end %>
+        <% end %>
+      </div>
       <div class="review-form">
         <%= render "reviews/form", shop: @shop, review: @review %>
       </div>
     </div>
   </div>
 </div>
+
+<% if @chat %>
+<%= render "chats/show", chat: @chat %>
+<% else %>
+<%= link_to "Start chatting", shop_chats_path(@shop), data: { turbo_method: :post } %>
+<% end %>

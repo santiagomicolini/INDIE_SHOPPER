@@ -16,7 +16,8 @@ Review.destroy_all
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: "123456",
-    indie_coins: rand(2000)
+    indie_coins: rand(2000),
+    username: Faker::Internet.username,
   )
   user.photo.attach(io: file, filename: "#{user.first_name}.png", content_type: "image/png")
   user.save!

@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import ChatController from "./chat_controller"
+application.register("chat", ChatController)
+
+import ChatSubscriptionController from "./chat_subscription_controller"
+application.register("chat-subscription", ChatSubscriptionController)
+
 import InsertInListController from "./insert_in_list_controller"
 application.register("insert-in-list", InsertInListController)
 
