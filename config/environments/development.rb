@@ -1,17 +1,19 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://localhost:3000" }
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { host: "http://www.indieshopper.co/" }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-  # address:              'indieshoppa.gmail.com',
-  # port:                 587,
-  # domain:               'example.com',
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'gmail.com',
   user_name:            'indieshoppa@gmail.com',
-  password:             'j68ZGvx63#Ea',
-  # authentication:       'plain',
-  # enable_starttls_auto: true
+  password:             'qqinajcyibnyrnvm',
+  authentication:       'plain',
+  enable_starttls_auto: true,
+  open_timeout:         5,
+  read_timeout:         5
 }
   # Settings specified here will take precedence over those in config/application.rb.
 
