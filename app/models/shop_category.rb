@@ -4,7 +4,7 @@ class ShopCategory < ApplicationRecord
   ICONS = {
     "Clothing" => '<i class="fa-sharp fa-solid fa-shirt"></i>',
     "Furniture" => '<i class="fa-sharp fa-solid fa-couch"></i>',
-    "Home" => '<i class="fa-sharp fa-solid fa-house"></i>',
+    "Household" => '<i class="fa-sharp fa-solid fa-house"></i>',
     "Plants" => '<i class="fa-sharp fa-solid fa-leaf"></i>',
     "Footwear" => '<i class="fa-solid fa-shoe-prints"></i>',
     "Decoration" => '<i class="fa-solid fa-rug"></i>',

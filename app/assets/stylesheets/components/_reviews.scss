@@ -5,8 +5,9 @@
 }
 
 .review-title {
-  margin-top: 64px;
+  margin-top: 32px;
   font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .review {
@@ -22,4 +23,16 @@
 .reviews-card {
   max-height: 100px;
   overflow: scroll;
+}
+
+.reviews-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
 }

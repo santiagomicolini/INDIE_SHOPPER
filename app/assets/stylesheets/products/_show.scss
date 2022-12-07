@@ -40,6 +40,7 @@
   flex-direction: column;
   align-items: center;
   padding: 0 20px;
+  max-width: 550px;
 }
 
 .buttons {
@@ -48,6 +49,13 @@
   margin: 10px;
 }
 
+.product-swow-img {
+  border-radius: 10px;
+}
+
+.containter-2 {
+  margin-top: 40px;
+}
 
 // .shop-card-text {
 //   position: absolute;
