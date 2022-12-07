@@ -12,4 +12,8 @@ class ReservationPolicy < ApplicationPolicy
   def update?
     true
   end
+
+  def qr_collected?
+    true
+  end
 end
