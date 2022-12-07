@@ -29,7 +29,7 @@ end
   ProductCategory.create(product_category_name: cat)
 end
 
-["Clothing", "Footwear", "Furniture", "Home", "Plants", "Decoration", "Jewelry", "Wineries", "Kitchen"].each do |shop|
+["Clothing", "Footwear", "Furniture", "Household", "Plants", "Decoration", "Jewelry", "Wineries", "Kitchen"].each do |shop|
   ShopCategory.create(shop_category_name: shop)
 end
 
@@ -103,6 +103,7 @@ end
     name: "TWOTHIRDS BCN",
     address: "Av. del Tibidabo, 49, 08035 Barcelona",
     phone_number: "934125371",
+    about: "Founded in 2010 out of a deep love for the ocean, our brand has evolved into a community of like-minded people. Together, we want to create clothing with zero impact on the planet and its oceans. We use fabrics that save water, turn plastic waste into quality garments and wrap orders in paper packaging. Our products are all Climate Neutral.",
     website: "https://twothirds.com/",
     user: User.all.sample,
     shop_category: ShopCategory.find_by(shop_category_name: "Clothing")
@@ -198,7 +199,7 @@ end
     about: "CASA PROTEA PLANT COLLECTORS STUDIO OPENED ITS DOORS IN BARCELONA -BARRI DE GRÀCIA- IN AUGUST 2017 AS A MEETING PLACE FOR PLANT LOVERS. WE WORK WITH A WIDE VARIETY OF SPECIES, TROPICAL PLANTS, CACTI, SUCCULENTS AND AIR PLANTS BEING MOST PROMINENT. IN SELECTING EACH SPECIMEN WE LOOK AT PROPERTIES SUCH AS AGE, UNIQUE SHAPE OR RARITY.",
     website: "https://www.casaprotea.com/",
     user: User.all.sample,
-    shop_category: ShopCategory.find_by(shop_category_name: "Home")
+    shop_category: ShopCategory.find_by(shop_category_name: "Household")
   )
   protea.save!
   protea.photos.attach(io: URI.open("https://www.casaprotea.com/wp-content/uploads/2019/08/CASA-PROTEA-HR-146.jpg"), filename: "#{protea.name}.jpg", content_type: "image/jpeg")
@@ -251,7 +252,7 @@ end
     phone_number: "690286123",
     website: "http://www.heyshop.es/",
     user: User.all.sample,
-    shop_category: ShopCategory.find_by(shop_category_name: "Home")
+    shop_category: ShopCategory.find_by(shop_category_name: "Household")
   )
   hey.save!
   hey.photos.attach(io: URI.open("https://64.media.tumblr.com/8cac28870d945b867d1882a5739aef23/tumblr_plsib563QY1uuhr4zo1_1280.jpg"), filename: "#{hey.name}.jpg", content_type: "image/jpeg")
@@ -264,7 +265,7 @@ end
     phone_number: "933154695",
     website: "http://www.nothrowdesign.com/",
     user: User.all.sample,
-    shop_category: ShopCategory.find_by(shop_category_name: "Home")
+    shop_category: ShopCategory.find_by(shop_category_name: "Household")
   )
   nothow.save!
   nothow.photos.attach(io: URI.open("https://nothrowdesign.com/wp-content/uploads/2018/05/Screen-Shot-2018-05-17-at-15.20.50.png"), filename: "#{nothow.name}.jpg", content_type: "image/jpeg")

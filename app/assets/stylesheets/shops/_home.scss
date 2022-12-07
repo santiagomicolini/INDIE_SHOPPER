@@ -1,5 +1,5 @@
 .filter-apply {
-  color: #006400ff;
+  color: #38b000ff;
 }
 
 .filter-container {
@@ -19,7 +19,7 @@
 }
 
 .filter-container :hover {
-  color:#006400ff;
+  color:#38b000ff;
 }
 
 .icons-card {
@@ -42,4 +42,9 @@
   gap: 2px;
   margin: 0 auto;
   justify-content:right;
+}
+
+.icons {
+  font-size: 20px;
+  color: #2A9134;
 }

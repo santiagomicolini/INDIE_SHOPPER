@@ -9,13 +9,8 @@
         <h5><strong>About us</strong></h5>
         <p><%= @shop.about %></p>
       </div>
-      <p>  <i class="fa-solid fa-location-dot"></i> <%= @shop.address %></p>
-      <p>  <i class="fa-solid fa-phone"></i> <%= @shop.phone_number %></p>
-  </div>
-      <% if policy(@shop).edit? %>
-      <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
-      <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
-      <% end %>
+        <p>  <i class="fa-solid fa-location-dot"></i> <%= @shop.address %></p>
+        <p>  <i class="fa-solid fa-phone"></i> <%= @shop.phone_number %></p>
   </div>
 </div>
 
@@ -45,24 +40,30 @@
     <hr>
   </div>
     <div class="reviews-container">
-      <h2 class="text-center review-title"><%= pluralize @shop.reviews.size, "Review" %></h2>
       <div data-controller="insert-in-list">
-        <div data-insert-in-list-target="items" class="reviews-card">
-          <% if @shop.reviews.blank? %>
-            Be the first to leave a review for <%= @shop.name %>
-          <% else %>
-          <% @shop.reviews.each do |review| %>
-            <%= render "review", review: review %>
-          <hr>
-          <% end %>
+        <h2 class="text-center review-title"><%= pluralize @shop.reviews.size, "Review" %></h2>
+          <div data-insert-in-list-target="items" class="reviews-card">
+              <% if @shop.reviews.blank? %>
+                Be the first to leave a review for <%= @shop.name %>
+              <% else %>
+              <% @shop.reviews.each do |review| %>
+                <%= render "review", review: review %>
+              <hr>
+              <% end %>
+              <% end %>
+          </div>
+            <% if user_signed_in? %>
+              <div class="review-form">
+              <%= render "reviews/form", shop: @shop, review: @review %>
+            <% end %>
+          </div>
+      </div>
+        <div class="edit-delete">
+          <% if policy(@shop).edit? %>
+            <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+            <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
           <% end %>
         </div>
-        <% if user_signed_in? %>
-          <div class="review-form">
-            <%= render "reviews/form", shop: @shop, review: @review %>
-          </div>
-        <% end %>
-    </div>
 </div>
 
 <% if @chat %>
