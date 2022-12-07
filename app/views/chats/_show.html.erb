@@ -1,12 +1,10 @@
-<div data-controller="chat chat-subscription" data-chat-subscription-chat-id-value="<%= @chat.id %>" class="chat">
-
-  <div class="chat-messages" data-chat-subscription-target="messages" data-chat-target="window">
+<div data-controller="chat chat-subscription" data-chat-subscription-chat-id-value="<%= @chat.id %>" class="chat" data-chat-target="window">
+  <div class="chat-messages" data-chat-subscription-target="messages">
     <i id="chat-cross" class="fa-solid fa-xmark" data-action="click->chat#hide"></i>
     <% @chat.messages.each do |message| %>
       <%= render "messages/message", message: message %>
     <% end %>
   </div>
-
   <div class="chat-send">
     <%= simple_form_for [@chat, @message],
     html: { data: { action: "turbo:submit-end->chat-subscription#resetForm" }, class: "d-flex" } do |f| %>
@@ -18,5 +16,4 @@
     <%= f.submit "Send", class: "btn mb-3" %>
     <% end %>
   </div>
-
 </div>
