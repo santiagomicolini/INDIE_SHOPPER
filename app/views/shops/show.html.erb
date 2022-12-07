@@ -1,8 +1,17 @@
-<div class="shop-card" style="background-image: url('<%= cl_image_path @shop.photos.first.key %>');">
-  <div class="shop-card-text">
-      <h1><%= @shop.name %></h1>
-      <h4>Address: <%= @shop.address %></h4>
-      <h4>Phone Number: <%= @shop.phone_number %></h4>
+<div class="shop-card container">
+  <div class="img-card">
+    <%= cl_image_tag @shop.photos.first.key, class: "shop-img" %>
+  </div>
+  <div class="info-card">
+      <h3><%= @shop.name %></h3>
+      <hr>
+      <div class="about">
+        <h5><strong>About us</strong></h5>
+        <p><%= @shop.about %></p>
+      </div>
+      <p>  <i class="fa-solid fa-location-dot"></i> <%= @shop.address %></p>
+      <p>  <i class="fa-solid fa-phone"></i> <%= @shop.phone_number %></p>
+  </div>
       <% if policy(@shop).edit? %>
       <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
       <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
@@ -13,20 +22,21 @@
 <div class="container">
   <div class="products-container">
     <hr>
-      <h2 class="text-center">Products</h2>
+      <h3 class="text-center">Products</h3>
     <hr>
       <ul class="product-cards">
           <% @products.each do |product| %>
           <div class="product-card">
-            <%= link_to shop_product_path(@shop, product) do %>
-              <%= cl_image_tag product.photos.first.key %>
-              <h5><strong><%= product.name %></strong></h5>
-              <p><%= product.info %></p>
-              <div class="price-icon">
-                <p>€<%= product.price.to_i %></p>
+            <%= link_to shop_product_path(@shop, product), class: "class-1" do %>
+              <div class="shop-product-img">
+                <%= cl_image_tag product.photos.first.key %>
               </div>
-              <div class="basket-icon">
-                <i class="fa-solid fa-basket-shopping"></i>
+               <div class="product-info">
+                <div class="price-icon basket-icon">
+                  <p>€<%= product.price.to_i %></p>
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <h5><%= product.name %></h5>
               </div>
             <% end %>
           </div>
@@ -34,22 +44,23 @@
       </ul>
     <hr>
   </div>
-  <div class="reviews-container">
-    <h2 class="text-center review-title"><%= pluralize @shop.reviews.size, "Review" %></h2>
-    <div data-controller="insert-in-list">
-        <div data-insert-in-list-target="items">
+    <div class="reviews-container">
+      <h2 class="text-center review-title"><%= pluralize @shop.reviews.size, "Review" %></h2>
+      <div data-controller="insert-in-list">
+        <div data-insert-in-list-target="items" class="reviews-card">
           <% if @shop.reviews.blank? %>
-          Be the first to leave a review for <%= @shop.name %>
+            Be the first to leave a review for <%= @shop.name %>
           <% else %>
           <% @shop.reviews.each do |review| %>
-              <%= render "review", review: review %>
-            <hr>
+            <%= render "review", review: review %>
+          <hr>
           <% end %>
           <% end %>
         </div>
-      <div class="review-form">
-        <%= render "reviews/form", shop: @shop, review: @review %>
-      </div>
+        <% if user_signed_in? %>
+          <div class="review-form">
+            <%= render "reviews/form", shop: @shop, review: @review %>
+          </div>
+        <% end %>
     </div>
-  </div>
 </div>
