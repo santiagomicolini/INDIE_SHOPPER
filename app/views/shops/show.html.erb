@@ -24,7 +24,7 @@
           <div class="product-card">
             <%= link_to shop_product_path(@shop, product), class: "class-1" do %>
               <div class="shop-product-img">
-                <%= cl_image_tag product.photos.first.key %>
+                <%= cl_image_tag product.photos.first.key, class:  "class-2"%>
               </div>
                <div class="product-info">
                 <div class="price-icon basket-icon">
@@ -56,6 +56,13 @@
               <div class="review-form">
               <%= render "reviews/form", shop: @shop, review: @review %>
             <% end %>
+        <div class="chat">
+          <% if @chat %>
+          <%= render "chats/show", chat: @chat %>
+          <% else %>
+          <%= link_to "Start chatting", shop_chats_path(@shop), data: { turbo_method: :post } %>
+          <% end %>
+        </div>
           </div>
       </div>
         <div class="edit-delete">
@@ -65,9 +72,3 @@
           <% end %>
         </div>
 </div>
-
-<% if @chat %>
-<%= render "chats/show", chat: @chat %>
-<% else %>
-<%= link_to "Start chatting", shop_chats_path(@shop), data: { turbo_method: :post } %>
-<% end %>

@@ -8,6 +8,12 @@
   grid-template-columns: 20% 50% 20%;
   align-items: flex-end ;
   column-gap: 5%;
+  padding: 12px;
+  border: solid;
+}
+
+.basket:hover {
+  box-shadow: 2px 2px 5px black;
 }
 
 
