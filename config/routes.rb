@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :basket, only: [:show]
   resources :basket_products, only: [:destroy]
   get "/my_shop", to: "shops#my_shop"
+
+  get "/qr-collected", to: "reservations#qr_collected"
 end
