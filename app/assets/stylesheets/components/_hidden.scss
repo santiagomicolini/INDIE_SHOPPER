@@ -1,0 +1,10 @@
+.hidden {
+  display: none;
+  transition: height 0.3s ease-out;
+}
+
+.open {
+  display: block;  /* Show the dropdown when it is open */
+  height: auto;  /* Set the height to auto to display the dropdown contents */
+  /* Other styles here */
+}

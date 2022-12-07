@@ -7,15 +7,20 @@
       <p class="basket-text"><%= product.name %></p>
       <p class="basket-text"><%= product.info %></p>
       <div class="delete-item basket-text">
-      <p class="basket-price basket-text">$<%= product.price %> <%total << product.price%> </p>
-      <%= link_to basket_product_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do  %>
-        <i class="fa-solid fa-trash"></i>
-        <% end %>
+        <p class="basket-price basket-text">€<%= product.price %> <%total << product.price%> </p>
+        <%= link_to basket_product_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do  %>
+          <i class="fa-solid fa-trash"></i>
+          <% end %>
       </div>
     </div>
       <hr>
   </div>
 <% end %>
+    <div class="reserve-basket-item">
+      <%= link_to reservations_path, data: { 'turbo-method' => :post } do  %>
+      <i class="fa-solid fa-bag-shopping"></i>
+      <% end %>
+    </div>
 <div class="basket-total">
-  <p> Total basket = $<%= total.sum %></p>
+  <p> Total basket = €<%= total.sum %></p>
 </div>

@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2022_12_06_163125) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,7 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_163125) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.boolean "status"
+    t.integer "status", default: 0
     t.bigint "shop_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

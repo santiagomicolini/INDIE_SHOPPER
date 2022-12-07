@@ -11,6 +11,8 @@ gem "sprockets-rails"
 
 gem "geocoder"
 
+gem 'jquery-rails'
+
 gem "pundit"
 
 # Use postgresql as the database for Active Record
