@@ -3,10 +3,15 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
 
   def index
+    @categories = ShopCategory.all
     if params[:query].present?
       @shops = Shop.global_search(params[:query])
     else
       @shops = Shop.all
+    end
+
+    if params[:category].present?
+      @shops = @shops.where(shop_category_id: params[:category])
     end
     @markers = @shops.geocoded.map do |flat|
       {
@@ -14,6 +19,12 @@ class ShopsController < ApplicationController
         lng: flat.longitude
       }
     end
+  end
+
+  def my_shop
+    @shop = Shop.where(user_id: current_user).first
+    @reservations = Reservation.where(shop_id: @shop)
+    authorize @shop
   end
 
   def new

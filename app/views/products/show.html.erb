@@ -27,8 +27,8 @@
     <div class="buttons">
       <% if policy(@product).edit? %>
         <div class="space">
-          <%= link_to "Edit this product", edit_product_path(@product), class: "btn" if policy(@product).edit?%>
-          <%= link_to "Delete this product", product_path(@product), class: "btn", data: { turbo_method: :delete, turbo_confirm: "are you shur" } if policy(@product).destroy?%>
+          <%= link_to "Edit this product", edit_product_path(@product), class: "btn"%>
+          <%= link_to "Delete this product", product_path(@product), class: "btn", data: { turbo_method: :delete, turbo_confirm: "are you sure" } if policy(@product).destroy? %>
         </div>
       <% end %>
     </div>

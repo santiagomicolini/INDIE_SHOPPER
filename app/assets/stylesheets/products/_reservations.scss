@@ -1,0 +1,37 @@
+.reservation-items, .reservations {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reservations-price {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+
+
+.reservations-text {
+  display: flex;
+  align-items: flex-end;
+  margin: 0px;
+  overflow-x: hidden;
+  max-width: 208px;
+}
+
+.reservations-total {
+  // margin-right: 7%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reservations-title {
+  margin: 40px auto;
+}

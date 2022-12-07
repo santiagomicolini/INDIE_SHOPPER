@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     resources :chats, only: :create
   end
 
-  resources :reservations, only: [:create, :update, :destroy, :index]
-  resources :products, only: [:destroy, :update, :edit] do
-    resources :basket_products, only: [:create]
+
+  resources :reservations, only: [:new, :create, :update, :destroy, :index]
+    resources :products, only: [:destroy, :update, :edit] do
+      resources :basket_products, only: [:create]
   end
 
   resources :basket, only: [:show]
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
   resources :chats, only: :show do
     resources :messages, only: [:create]
   end
+  get "/my_shop", to: "shops#my_shop"
 end
