@@ -9,6 +9,10 @@ class ShopPolicy < ApplicationPolicy
     true
   end
 
+  def my_shop?
+    record.user == user
+  end
+
   def update?
     record.user == user
   end

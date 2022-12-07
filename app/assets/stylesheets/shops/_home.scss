@@ -1,0 +1,50 @@
+.filter-apply {
+  color: #38b000ff;
+}
+
+.filter-container {
+  margin-top: 30px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.filter-container a {
+  width: fit-content;
+  white-space: nowrap;
+  margin: 0 50px;
+}
+
+.filter-container :hover {
+  color:#38b000ff;
+}
+
+.icons-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subheading {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.search-bar {
+  display: flex;
+  padding-top: 30px;
+  gap: 2px;
+  margin: 0 auto;
+  justify-content:right;
+}
+
+.icons {
+  font-size: 20px;
+  color: #2A9134;
+}

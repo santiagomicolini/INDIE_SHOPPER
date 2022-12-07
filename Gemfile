@@ -11,7 +11,13 @@ gem "sprockets-rails"
 
 gem "geocoder"
 
+gem "letter_opener", group: :development
+
+gem 'jquery-rails'
+
 gem "pundit"
+
+gem "rqrcode", "~> 2.0"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

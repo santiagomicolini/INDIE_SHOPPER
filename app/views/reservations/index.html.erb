@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="text-center reservations-title">Reservations</h1>
+  <% total = [] %>
+    <% @reservations.each do |reservation| %>
+      <% reservation.reservation_products.each do |product| %>
+          <div class="reservations">
+            <%= cl_image_tag product.product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
+            <p class="reservations-text"><%= product.product.name %></p>
+            <p class="reservations-status">Status: <%= product.reservation.status %></p>
+            <p class="reservations-price reservations-text">€<%= product.product.price %> <%total << product.product.price%> </p>
+          </div>
+            <hr>
+    <% end %>
+  <% end %>
+  <div class="reservations-total">
+    <p> Total reservations = €<%= total.sum %></p>
+  </div>
+</div>

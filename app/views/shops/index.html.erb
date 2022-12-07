@@ -1,4 +1,4 @@
-<%= form_with url: shops_path, method: :get, class: "d-flex container mt-4 gap-2" do %>
+<%= form_with url: shops_path, method: :get, class: "container search-bar" do %>
   <%= text_field_tag :query,
       params[:query],
       class: "form-control",
@@ -7,19 +7,22 @@
   <%= submit_tag "Search", class: "btn" %>
 <% end %>
 
-<div>
+<div class= "container filter-container">
   <% @categories.each do |category| %>
-    <% if params[:category]&.include?(category.id.to_s)%>
-      <strong><%= link_to category.shop_category_name, shops_path(category: params[:category] - [category.id.to_s])%></strong>
-    <% else %>
-       <%= link_to category.shop_category_name, shops_path(category: params[:category] ? params[:category] + [category.id] : [category.id])%>
-    <% end %>
+    <div class="icons-card">
+      <span class="icons"><%= ShopCategory::ICONS[category.shop_category_name]&.html_safe%></span>
+      <% if params[:category]&.include?(category.id.to_s)%>
+          <%= link_to category.shop_category_name, shops_path(category: params[:category] - [category.id.to_s]), class: "filter-apply"%>
+      <% else %>
+        <%= link_to category.shop_category_name, shops_path(category: params[:category] ? params[:category] + [category.id] : [category.id])%>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
 
-<div class="container d-flex align-items-baseline mt-4">
-  <h3>Local Indieshops around</h3>
+<div class="container subheading">
+  <h4>Local shops around</h4>
   <p style="color: #006400ff">&nbsp;&nbsp;<%= @shops.count %> indieshops found</p>
 </div>
 
@@ -55,13 +58,15 @@
           <p><%= shop.address %></p>
           <p><%= shop.phone_number %></p>
           <% average = 0 %>
+          <% total = 0 %>
           <% shop.reviews.each do |review| %>
-          <% if @average == 0 %>
-          <% average = review.rating %>
-          <% else %>
-          <% average = (average + review.rating) / 2 %>
+            <% if review.rating == 0 || review.rating.nil? %>
+              <% average = review.rating %>
+            <% else %>
+              <% total = (total + review.rating) %>
+            <% end %>
           <% end %>
-          <% end %>
+          <% average = (total / shop.reviews.length) unless average == 0 %>
           <% if average == 0 %>
           <div class="d-flex align-items-center">
             <i class="fa-regular fa-star"></i>
