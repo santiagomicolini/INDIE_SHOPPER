@@ -10,10 +10,10 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.shop.user == user
   end
 
   def destroy?
-    true
+    record.shop.user == user
   end
 end

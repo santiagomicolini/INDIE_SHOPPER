@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <h1>IndieShopper</h1>
+    <p>Hi <%= @user.first_name %></p>
+    <p>Thanks for shopping at <%= @reservation.shop.name %>! </p>
+    <p>Reservation update: order number <%= @reservation.id %></p>
+    <% if @reservation.status == "Confirmed" %>
+      <p>Your reservation has been confirmed! Please present the QR code below to the shop owner to collect your IndieCoins when you pay for your items.</p>
+      <%= image_tag(attachments['tmp/qr_code.png'].url)%>
+    <% elsif @reservation.status == "Collected" %>
+       <p>Order collected! Your IndieCoin balance is now <% @user.indie_coins %>.</p>
+    <% elsif @reservation.status == "Pending" %>
+       <p>Your order is pending! Please wait for it to be confirmed by <%= @reservation.shop.name %>.</p>
+    <% elsif @reservation.status == "Rejected" %>
+       <p>Your order has unfortunately been rejected. Please contact <%= @reservation.shop.name %> for more info.</p>
+    <% end %>
+    <p>Thanks for using IndieShopper and supporting independent local businesses!</p>
+  </body>
+</html>

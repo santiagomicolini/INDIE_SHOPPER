@@ -1,18 +1,38 @@
 .reviews-container hr {
-  width: 50%;
+  display: flex;
+  max-width: 50px;
+
 }
 
 .review-title {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 32px;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .review {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  font-size: 12px;
+  justify-content: center;
 }
 
 .review-form {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+
+.reviews-card {
+  max-height: 100px;
+  overflow: scroll;
+}
+
+.reviews-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
 }

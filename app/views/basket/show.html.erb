@@ -1,21 +1,30 @@
+<div class="container">
 <h1 class="text-center basket-title">Basket</h1>
 <% total = [] %>
-<% @products.each do |product| %>
-  <div class="container">
-    <div class="basket">
-      <%= cl_image_tag product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
-      <p class="basket-text"><%= product.name %></p>
-      <p class="basket-text"><%= product.info %></p>
-      <div class="delete-item basket-text">
-      <p class="basket-price basket-text">$<%= product.price %> <%total << product.price%> </p>
-      <%= link_to basket_product_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do  %>
-        <i class="fa-solid fa-trash"></i>
+<div class="grid-2">
+  <div class="left">
+  <% @products.each do |product| %>
+        <div class="basket">
+          <%= cl_image_tag product.photos.first.key, class: "text", height: 100, width: 150, crop: :fill %>
+          <p class="basket-text"><%= product.name %></p>
+              <div>
+                <%= link_to basket_product_path(product), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do  %>
+                <p class="basket-text">€<%= product.price %> <i class="fa-solid fa-trash"></i> <%total << product.price%> </p>
+                <% end %>
+              </div>
+            <div class="delete-item basket-text">
+          <hr>
+            </div>
+        </div>
+    <% end %>
+  </div>
+    <div class="basket-total container">
+      <div class="reserve-basket-item">
+      <p> Total basket = €<%= total.sum %></p>
+        <%= link_to reservations_path, data: { 'turbo-method' => :post } do  %>
+        <p class= "reserve-btn">Click here to reserve <i class="fa-solid fa-bag-shopping"></i></p>
         <% end %>
       </div>
     </div>
-      <hr>
-  </div>
-<% end %>
-<div class="basket-total">
-  <p> Total basket = $<%= total.sum %></p>
+</div>
 </div>

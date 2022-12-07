@@ -1,0 +1,69 @@
+.reservations-shop-card {
+  // background-color: rgba(169, 169, 169, 0.4);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+  margin-top: 48px;
+  height: 230px;
+  position: relative;
+}
+
+.reservations-info-card {
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
+}
+
+.reservations-shop-card-shops p {
+  font-size: 14px;
+}
+
+.reservations-image {
+  object-fit: cover;
+}
+
+.reservations-shop-img {
+  max-width: 500px;
+  max-height: 400px;
+  display: flex;
+  align-content: center;
+}
+
+.reservations-img-card {
+  display: flex;
+  justify-content: center;
+}
+
+.reservations-about {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgb(207, 207, 207);
+  max-height: 300px;
+  max-width: 500px;
+  overflow: scroll;
+  margin-bottom: 20px;
+}
+
+.reservations-shop-btn-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  right: 5px;
+  bottom: 15px;
+
+  .btn {
+    margin: 0 10px;
+  }
+}
+
+.reservations-shop-card-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
