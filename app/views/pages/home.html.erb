@@ -1,42 +1,16 @@
-      <header>
-        <h2><a href="#" class="logo">IndieShopper</a></h2>
-        <div class="navigation">
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </div>
-
-        <div class="media-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-
-
-          <button type="button" class="btn btn-outline-primary me-2">Login</button>
-          <button type="button" class="btn btn-primary" href="/users/sign_in">Register</button>
-          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
-  class: "dropdown-item" %>
-
-      </header>
-
-      <div class="homepage-container">
-        <div class="content">
-          <div class="info">
-            <h1>IndieShopper</h1>
-            <h2>Shop from local independent stores!</h2>
-            <div class="homepage-searchbar">
-              <%= form_with url: shops_path, method: :get, class: "d-flex container mt-4 gap-2" do %>
-              <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Type a product, shop or address"%>
-              <%= submit_tag "Search", class: "btn" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
+<div class="homepage-container">
+  <div class="content">
+    <div class="info">
+      <h1>IndieShopper</h1>
+      <h2>Shop from local independent stores!</h2>
+      <div class="homepage-searchbar">
+        <form action="shops_path" method="get" class="d-flex container mt-4 gap-2">
+          <input type="text" name="query"  placeholder="Type a product, shop or address">
+          <input type="submit" value="Search" class="btn">
+        </form>
       </div>
-      </div>
-      </body>
-      <footer>
-      </footer>
+    </div>
+  </div>
+</div>
 
-      </html>
+<footer></footer>
