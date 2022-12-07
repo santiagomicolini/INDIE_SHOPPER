@@ -1,5 +1,5 @@
 <div class="reservations">
-      <h4>Reservation ID: <%= reservation.id %></h4>
+      <p>Reservation ID: <%= reservation.id %></p>
       <p class="reservations-status">Items: <%= reservation.reservation_products.count %></p>
       <p class="reservations-status">Status: <%= reservation.status %></p>
             <%= simple_form_for reservation, data: { turbo_method: "patch" }, remote: true do |f| %>
