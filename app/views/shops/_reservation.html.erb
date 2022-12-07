@@ -7,7 +7,7 @@
               <%= f.button :submit %>
             <% end %>
       <p class="reservations-status">Created at: <%= reservation.created_at.strftime("%m/%d/%Y %H:%M") %></p>
-      <button data-action="click->collapsable-cards#toggle" data-reservation="<%= reservation.id %>">Show items:</button>
+      <i class="fa-solid fa-circle-chevron-down" data-action="click->collapsable-cards#toggle" data-reservation="<%= reservation.id %>"></i>
     </div>
     <hr>
 

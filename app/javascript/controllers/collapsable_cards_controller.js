@@ -14,6 +14,6 @@ export default class extends Controller {
       let button_id = event.currentTarget.dataset.reservation
       let card_id = this.cardsTarget.dataset.cards
       let current_card = this.cardsTargets.find(card => card.dataset.cards == button_id)
-      current_card.classList.toggle("hidden")
+      current_card.classList.toggle("open")
     }
     }
