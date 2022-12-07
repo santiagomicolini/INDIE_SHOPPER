@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   def create
     @basket.products.each do |product|
       @reservation = Reservation.find_by(user: current_user, shop: product.shop)
-      if @reservation.status == "Pending"
+      if @reservation && @reservation.status == "Pending"
         authorize @reservation
         ReservationProduct.create(product: product, reservation: Reservation.find_by(user: current_user, shop: product.shop))
       else

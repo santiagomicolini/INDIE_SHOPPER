@@ -1,21 +1,25 @@
 <div class="shop-card" style="background-image: url('<%= cl_image_path @shop.photos.first.key %>');">
   <div class="shop-card-text">
-      <h1><%= @shop.name %></h1>
-      <h4>Address: <%= @shop.address %></h4>
-      <h4>Phone Number: <%= @shop.phone_number %></h4>
-      <% if policy(@shop).edit? %>
-      <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
-      <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
-      <% end %>
+    <h1><%= @shop.name %></h1>
+    <h4>Address: <%= @shop.address %></h4>
+    <h4>Phone Number: <%= @shop.phone_number %></h4>
+  </div>
+  <div class="shop-btn-div">
+    <% if policy(@shop).edit? %>
+    <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
+    <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
+    <% end %>
   </div>
 </div>
 <div class="container">
+<h2 class="text-center">Reservations</h2>
+<hr>
   <div class="pending-reservations">
 
     <div data-controller="collapsable-cards">
 <% statuses = ["Pending", "Confirmed", "Rejected", "Collected"] %>
  <% statuses.each do |status| %>
-  <h2><%= status %> Reservations:</h2>
+  <h3><%= status %>:</h3>
     <% reservations_with_status = @reservations.select { |r| r.status == status } %>
     <% if reservations_with_status.any? %>
       <% reservations_with_status.each do |reservation| %>
