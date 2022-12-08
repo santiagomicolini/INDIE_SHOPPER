@@ -56,11 +56,20 @@
   right: 5px;
   bottom: 15px;
 
+
   .btn {
     margin: 0 10px;
   }
 }
 
+.reservations-view-shop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+}
 .reservations-shop-card-text {
   display: flex;
   justify-content: center;
