@@ -1,4 +1,4 @@
 class BasketProduct < ApplicationRecord
   belongs_to :product
-  belongs_to :basket, dependent: :destroy
+  belongs_to :basket
 end
