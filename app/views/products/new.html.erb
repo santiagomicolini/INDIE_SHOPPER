@@ -1,17 +1,11 @@
 <div class="container" >
   <h4>Here you can add new products for your shop <i class="fa-solid fa-heart"></i></h4>
   <%= simple_form_for [@shop, @product] do |f| %>
-    <p>Product name</p>
     <%= f.input :name, label: "Product name", :label_html => { :class => 'type' }%>
-    <p>Price</p>
     <%= f.input :price %>
-    <p>Product description</p>
     <%= f.input :info, label: "Description" %>
-    <p>Produt Category</p>
     <%= f.association :product_category, collection: ProductCategory.all.map {|category| [category.id, category.product_category_name]}, label_method: :second, value_method: :first %>
-    <p>Attach photo</p>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <p>Add CSV file</p>
     <%= f.input :csv_file, as: :file %>
     <%= f.submit %>
   <% end %>

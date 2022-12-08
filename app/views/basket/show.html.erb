@@ -13,14 +13,13 @@
                 <% end %>
               </div>
             <div class="delete-item basket-text">
-            <hr>
             </div>
         </div>
     <% end %>
   </div>
     <div class="basket-total container">
       <div class="reserve-basket-item">
-      <p> Total basket = €<%= total.sum %></p>
+      <p> <i class="fa-solid fa-money-bill"></i> TOTAL BASKET € <%= total.sum %></p>
         <%= link_to reservations_path, data: { 'turbo-method' => :post } do  %>
         <p class= "reserve-btn">Click here to reserve <i class="fa-solid fa-bag-shopping"></i></p>
         <% end %>
