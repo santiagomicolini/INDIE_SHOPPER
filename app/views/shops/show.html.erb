@@ -11,6 +11,9 @@
       </div>
         <p>  <i class="fa-solid fa-location-dot"></i> <%= @shop.address %></p>
         <p>  <i class="fa-solid fa-phone"></i> <%= @shop.phone_number %></p>
+        <% if policy(@shop).edit? %>
+        <%= link_to "Add products", new_shop_product_path(@shop), class: "btn" %>
+        <% end %>
   </div>
 </div>
 
@@ -67,8 +70,8 @@
       </div>
         <div class="edit-delete">
           <% if policy(@shop).edit? %>
-            <%= link_to "Edit this shop", edit_shop_path(@shop), class: "btn"%>
-            <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
+            <%= button_to "Edit my shop", edit_shop_path(@shop), class: "btn" %>
+            <%= button_to "Delete my shop", @shop, class: "btn", method: :delete if policy(@shop).destroy?%>
           <% end %>
         </div>
 </div>

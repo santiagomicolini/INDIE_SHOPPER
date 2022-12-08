@@ -9,7 +9,7 @@ class BasketProductsController < ApplicationController
 
     @basket_product = BasketProduct.create(basket: @basket, product_id: params[:product_id])
     authorize @basket_product
-    redirect_to basket_path(@basket)
+    redirect_to shop_path(@basket_product.product.shop)
     flash[:notice] = "Product added"
   end
 

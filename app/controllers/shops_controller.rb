@@ -44,7 +44,7 @@ class ShopsController < ApplicationController
     @products = @shop.products
     @review = Review.new
     @message = Message.new
-    if @chat = current_user.chats.find { |chat| chat.users.include?(@shop.user) }
+    if current_user && @chat = current_user.chats.find { |chat| chat.users.include?(@shop.user) }
       @chat
     end
   end
