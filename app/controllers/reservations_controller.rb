@@ -63,6 +63,7 @@ class ReservationsController < ApplicationController
       resize_exactly_to: false,
       resize_gte_to: false,
       size: 120)
+
       File.binwrite("tmp/qr_code.png", png.to_s)
   end
 
