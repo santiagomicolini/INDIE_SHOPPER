@@ -10,6 +10,9 @@
     <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
     <% end %>
   </div>
+  <div class="reservations-view-shop">
+    <%= link_to "View shop profile", shop_path(@shop), class: "btn"%>
+  </div>
 </div>
 <div class="container">
 <h2 class="text-center">Reservations</h2>
@@ -33,11 +36,11 @@
   </div>
 </div>
 <script>
-  $(document).on('ajax:success', function(event) {
-    // Get the updated status from the AJAX response
-    var updatedStatus = event.detail[0].status;
+  // $(document).on('ajax:success', function(event) {
+  //   // Get the updated status from the AJAX response
+  //   var updatedStatus = event.detail[0].status;
 
-    // Update the page with the new status
-    $('#status-display').text(updatedStatus);
-  });
+  //   // Update the page with the new status
+  //   $('#status-display').text(updatedStatus);
+  // });
 </script>

@@ -3,12 +3,17 @@
   bottom: 0;
   right: 10px;
   background-color: white;
+  border-style: solid;
+  border-width: medium;
+  border-color: $dark-green-x-11;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .chat-messages {
   max-height: 400px;
   overflow: scroll;
-  padding: 12px 8px 0px 8px;
+  padding: 15px 10px 0px 10px;
 }
 
 #chat-cross {
@@ -17,4 +22,30 @@
   right: 0;
   padding: 8px;
   cursor: pointer;
+}
+
+.fa-comments {
+  position: fixed;
+  bottom: 15px;
+  right: 30px;
+  cursor: pointer;
+}
+
+.fa-comments:hover {
+  color: $pakistan-green;
+  transition: 0.3s;
+}
+
+.message-user {
+  text-align: right;
+  background-color: lightgray;
+  border-radius: 8px;
+  padding-right: 5px;
+}
+
+.message-current-user {
+  text-align: left;
+  background-color: lightblue;
+  border-radius: 8px;
+  padding-left: 5px;
 }
