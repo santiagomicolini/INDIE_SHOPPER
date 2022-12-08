@@ -33,9 +33,10 @@ class ReservationsController < ApplicationController
     @reservation.update(status: params[:reservation][:status])
     generate_qr_code(@reservation) if params[:reservation][:status] == "Confirmed"
     UserMailer.with(user: @user, reservation: @reservation).status_update.deliver_now
-    respond_to do |format|
-      format.json { render json: { status: @reservation.status } }
-    end
+    # respond_to do |format|
+    #   format.json { render json: { status: @reservation.status } }
+    # end
+    redirect_to my_shop_path
   end
 
   def qr_collected
@@ -50,7 +51,7 @@ class ReservationsController < ApplicationController
   end
 
   def generate_qr_code(reservation)
-    qr = RQRCode::QRCode.new("localhost:3000/qr-collected/?q=#{reservation.id}")
+    qr = RQRCode::QRCode.new("www.indieshopper.co/qr-collected/?q=#{reservation.id}")
 
     png = qr.as_png(
       bit_depth: 1,
@@ -62,6 +63,7 @@ class ReservationsController < ApplicationController
       resize_exactly_to: false,
       resize_gte_to: false,
       size: 120)
+
       File.binwrite("tmp/qr_code.png", png.to_s)
   end
 
