@@ -28,4 +28,11 @@
   position: fixed;
   bottom: 15px;
   right: 30px;
+  cursor: pointer;
+}
+
+.fa-comments:hover {
+  color: $pakistan-green;
+  // make a transition of 0.3 seconds
+  transition: 0.3s;
 }

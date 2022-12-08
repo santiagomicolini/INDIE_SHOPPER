@@ -59,13 +59,7 @@
               <div class="review-form">
               <%= render "reviews/form", shop: @shop, review: @review %>
             <% end %>
-        <div class="chat">
-          <% if @chat %>
-          <%= render "chats/show", chat: @chat %>
-          <% else %>
-          <%= link_to "Start chatting", shop_chats_path(@shop), data: { turbo_method: :post } %>
-          <% end %>
-        </div>
+
           </div>
       </div>
         <div class="edit-delete">
@@ -77,9 +71,16 @@
 </div>
 
 <% if @chat %>
-<%= render "chats/show", chat: @chat %>
-<% else %>
-<%= link_to shop_chats_path(@shop), data: { turbo_method: :post } do %>
-<i class="fa-solid fa-comments fa-3x" data-chat-target="fontawesome"></i>
-<% end %>
+
+  <div data-controller="chat">
+    <i class="fa-solid fa-comments fa-3x" data-chat-target="fontawesome" data-action="click->chat#show"></i>
+    <%= render "chats/show", chat: @chat %>
+  </div>
+
+  <% else %>
+
+  <%= link_to shop_chats_path(@shop), data: { turbo_method: :post } do %>
+    <i class="fa-solid fa-comments fa-3x" data-chat-target="fontawesome"></i>
+  <% end %>
+
 <% end %>

@@ -1,14 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["window", "fontawesome"]
+  static targets = ["conversation", "fontawesome"]
 
   show() {
-    this.windowTarget.style.display = "block"
+    this.conversationTarget.style.display = "block"
   }
 
   hide() {
-    this.windowTarget.style.display = "none"
-    console.log(this.fontawesomeTarget)
+    this.conversationTarget.style.display = "none"
   }
 }
