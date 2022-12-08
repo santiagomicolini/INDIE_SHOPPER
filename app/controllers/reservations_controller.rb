@@ -51,7 +51,7 @@ class ReservationsController < ApplicationController
   end
 
   def generate_qr_code(reservation)
-    qr = RQRCode::QRCode.new("localhost:3000/qr-collected/?q=#{reservation.id}")
+    qr = RQRCode::QRCode.new("indieshopper.co/qr-collected/?q=#{reservation.id}")
 
     png = qr.as_png(
       bit_depth: 1,
