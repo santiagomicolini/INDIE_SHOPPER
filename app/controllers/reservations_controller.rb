@@ -33,9 +33,10 @@ class ReservationsController < ApplicationController
     @reservation.update(status: params[:reservation][:status])
     generate_qr_code(@reservation) if params[:reservation][:status] == "Confirmed"
     UserMailer.with(user: @user, reservation: @reservation).status_update.deliver_now
-    respond_to do |format|
-      format.json { render json: { status: @reservation.status } }
-    end
+    # respond_to do |format|
+    #   format.json { render json: { status: @reservation.status } }
+    # end
+    redirect_to my_shop_path
   end
 
   def qr_collected
