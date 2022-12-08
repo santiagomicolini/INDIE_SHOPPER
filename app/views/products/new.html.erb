@@ -1,4 +1,5 @@
 <div class="container" >
+  <h4>Here you can add new products for your shop <i class="fa-solid fa-heart"></i></h4>
   <%= simple_form_for [@shop, @product] do |f| %>
     <%= f.input :name, label: "Product name", :label_html => { :class => 'type' }%>
     <%= f.input :price %>

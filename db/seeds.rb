@@ -1,7 +1,13 @@
 require 'faker'
 require "open-uri"
 
+UserChat.destroy_all
+Chat.destroy_all
 User.destroy_all
+Basket.destroy_all
+BasketProduct.destroy_all
+Reservation.destroy_all
+ReservationProduct.destroy_all
 ShopCategory.destroy_all
 Shop.destroy_all
 ProductCategory.destroy_all
@@ -17,15 +23,40 @@ Review.destroy_all
     email: Faker::Internet.email,
     password: "123456",
     indie_coins: rand(2000),
-    username: Faker::Internet.username,
+    username: Faker::Internet.username
   )
   user.photo.attach(io: file, filename: "#{user.first_name}.png", content_type: "image/png")
   user.save!
   puts "#{user.first_name} created!"
 end
+file_gabriel = URI.open("https://source.unsplash.com/random/?face")
+gabriel = User.new(
+  first_name: "Gabriel",
+  last_name: "Martinez",
+  email: "ghmartinez96@hotmail.com",
+  password: "123456",
+  indie_coins: rand(2000),
+  username: "gabrielmartinez"
+)
+gabriel.photo.attach(io: file_gabriel, filename: "#{gabriel.first_name}.png", content_type: "image/png")
+gabriel.save!
+puts "#{gabriel.first_name} created!"
+
+file_santi = URI.open("https://source.unsplash.com/random/?face")
+santi = User.new(
+  first_name: "Santiago",
+  last_name: "Micolini",
+  email: "santi.micolini2@gmail.com",
+  password: "123456",
+  indie_coins: rand(2000),
+  username: "santiagomicolini"
+)
+santi.photo.attach(io: file_santi, filename: "#{santi.first_name}.png", content_type: "image/png")
+santi.save!
+puts "#{santi.first_name} created!"
 
 
-["Hats", "Hat", "Pants", "Shorts", "Tees", "Books", "Print", "Jumper", "Socks", "Shirt", "Plants"].each do |cat|
+["Hats", "Hat", "Pants", "Shorts", "Tees", "Books", "Print", "Jumper", "Socks", "Shirt", "Plants", "Table", "Lamp", "Accessories", "Candle", "Vase", "Desk"].each do |cat|
   ProductCategory.create(product_category_name: cat)
 end
 
@@ -39,7 +70,7 @@ end
     phone_number: "931059743",
     about: "I'm Justo Heras, Laser's creative director, a Barcelona brand founded in 2010. Our biggest motivation since the first day was being able to express our own idea of Barcelona and what it represents to us. We try to convey with each collection all these local concepts that may seem invisible to any citizen. Our philosophy takes care of every detail, doing the designs myself, screen-printing and distributing them. That way we keep the production as local as possible, with an independent distribution, and working without intermediaries to get anywhere in the world the best way we can.",
     website: "https://laser-bcn.com",
-    user: User.all.sample,
+    user: santi,
     shop_category: ShopCategory.find_by(shop_category_name: "Clothing"),
   )
   laser.save!
@@ -183,8 +214,9 @@ end
     name: "HANNUN",
     address: "Carrer de Mura, 38, 08227 Terrassa, Barcelona",
     phone_number: "932209473",
+    about: "En Hannun trabajamos para transformar este modelo de producción basado en el fast furniture apostando por un modelo sostenible y respetuoso con el medio ambiente y la sociedad. En Hannun somos transparentes y respondemos a vuestras demandas, acreditando y certificando de forma oficial que nuestros productos son sostenibles y respetuosos con el medio ambiente.",
     website: "https://hannun.com/",
-    user: User.all.sample,
+    user: gabriel,
     shop_category: ShopCategory.find_by(shop_category_name: "Furniture")
   )
   hannun.save!
