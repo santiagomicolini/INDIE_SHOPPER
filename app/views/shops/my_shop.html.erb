@@ -10,6 +10,9 @@
     <%= button_to "Delete my shop", @shop, class:"btn", method: :delete if policy(@shop).destroy?%>
     <% end %>
   </div>
+  <div class="reservations-view-shop">
+    <%= link_to "View shop profile", shop_path(@shop), class: "btn"%>
+  </div>
 </div>
 <div class="container">
 <h2 class="text-center">Reservations</h2>
