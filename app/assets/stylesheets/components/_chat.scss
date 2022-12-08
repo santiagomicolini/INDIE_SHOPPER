@@ -33,6 +33,19 @@
 
 .fa-comments:hover {
   color: $pakistan-green;
-  // make a transition of 0.3 seconds
   transition: 0.3s;
+}
+
+.message-user {
+  text-align: right;
+  background-color: lightgray;
+  border-radius: 8px;
+  padding-right: 5px;
+}
+
+.message-current-user {
+  text-align: left;
+  background-color: lightblue;
+  border-radius: 8px;
+  padding-left: 5px;
 }

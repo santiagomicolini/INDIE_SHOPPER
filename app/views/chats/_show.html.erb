@@ -1,8 +1,18 @@
 <div data-controller="chat-subscription" data-chat-subscription-chat-id-value="<%= @chat.id %>" class="chat" data-chat-target="conversation">
   <div class="chat-messages" data-chat-subscription-target="messages">
     <i id="chat-cross" class="fa-solid fa-xmark" data-action="click->chat#hide"></i>
+    <% if current_user == @shop.user %>
+      <h4 class="pt-2">Chat with <%= @chat.users.find { |user| user != current_user }.username %></h4>
+    <% else %>
+      <h4 class="pt-2">Chat with <%= @shop.name %></h4>
+    <% end %>
+    <hr>
     <% @chat.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+      <% if message.user == current_user %>
+      <%= render "messages/message", message: message, css_class_one: 'message-current-user', css_class_two: 'text-right' %>
+      <% else %>
+      <%= render "messages/message", message: message, css_class_one: 'message-user', css_class_two: 'text-left' %>
+      <% end %>
     <% end %>
   </div>
   <div class="chat-send">
