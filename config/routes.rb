@@ -20,4 +20,6 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
   get "/my_shop", to: "shops#my_shop"
+
+  get "/qr-collected", to: "reservations#qr_collected"
 end

@@ -23,8 +23,8 @@ class ShopsController < ApplicationController
 
   def my_shop
     @shop = Shop.where(user_id: current_user).first
-    @reservations = Reservation.where(shop_id: @shop)
     authorize @shop
+    @reservations = Reservation.where(shop_id: @shop)
   end
 
   def new
@@ -44,7 +44,7 @@ class ShopsController < ApplicationController
     @products = @shop.products
     @review = Review.new
     @message = Message.new
-    if @chat = current_user.chats.find { |chat| chat.users.include?(@shop.user) }
+    if current_user && @chat = current_user.chats.find { |chat| chat.users.include?(@shop.user) }
       @chat
     end
   end
