@@ -23,8 +23,8 @@ class ShopsController < ApplicationController
 
   def my_shop
     @shop = Shop.where(user_id: current_user).first
-    @reservations = Reservation.where(shop_id: @shop)
     authorize @shop
+    @reservations = Reservation.where(shop_id: @shop)
   end
 
   def new
