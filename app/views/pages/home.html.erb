@@ -18,3 +18,35 @@
   </div>
 </div>
 <footer></footer>
+
+<%
+=begin%>
+ <% content_for :title, "IndieShopper" %>
+<% content_for :meta_description, "Shop from local independent stores!" %>
+
+<div class="homepage-container">
+  <div class="homepage-content">
+    <div class="homepage-info">
+      <h1>IndieShopper</h1>
+      <h2>Shop from local independent stores!</h2>
+      <div class="homepage-searchbar">
+        <form method="get" action="/shops">
+          <input name="query" id="query" type="search" placeholder="Search" required>
+          <i class="fa fa-search"></i>
+          <a href="javascript:void(0)" id="clear-btn">Clear</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const input = document.querySelector("input[type=search]");
+  const clearBtn = document.getElementById("clear-btn");
+
+  clearBtn.addEventListener("click", () => {
+    input.value = "";
+  });
+</script>
+<%
+=end%>
