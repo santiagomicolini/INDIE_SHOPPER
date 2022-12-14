@@ -1,6 +1,6 @@
 .shop-card {
   background-color: rgba(169, 169, 169, 0.4);
-  border-radius: 10px;
+  // border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 48px;
@@ -29,15 +29,19 @@
 
 .shop-img {
   border-radius: 10px;
-  max-width: 500px;
-  max-height: 400px;
-  display: flex;
-  align-content: center;
+    /* max-width: 500px; */
+    max-height: 400px;
+    /* display: flex; */
+    align-content: center;
+    -o-object-fit: cover;
+    object-fit: cover;
 }
 
 .img-card {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .about {
