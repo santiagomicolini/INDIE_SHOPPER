@@ -1,0 +1,24 @@
+.smaller-form {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: $sheen-green;
+
+  a {
+    color: $sheen-green;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 25px;
+    margin-top: 25px;
+  }
+}
+
+.login-text {
+  color: $sheen-green;
+}
